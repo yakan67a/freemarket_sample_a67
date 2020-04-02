@@ -1,24 +1,197 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Database creation
 
-Things you may want to cover:
+## users_table
 
-* Ruby version
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|nickname|string|null: false|
+|email|string|unique:true, null false|
+|password|string|null: false|
+|name_first|string|null: false|
+|name_last|string|null: false|
+|name_first_kana|string|null: false|
+|name_last_kana|string|null: false|
+|birth_year|integer|null: false|
+|birth_month|integer|null: false|
+|birth_day|integer|null: false|
+|profile_image|string|
+|rate_id|integer|foreign_key:true|ｖ
+|credit_card_id|integer|foreign_key:true, null:false|
+|profit|integer|
+|comment_id|integer|foreign_key: true|
 
-* System dependencies
+### Association
+- has_many :items
+- has_many :ratings
+- has_many :comments
+- belongs_to :sns_credential
+- belongs_to :credit_card
+- belongs_to :sipping_adress
 
-* Configuration
 
-* Database creation
+## items_table
 
-* Database initialization
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|user_id|integer|foreign_key: true|
+|item_name|string|null: false|
+|item_description|text| null: false|
+|images_id|integer|foreign_key:true, null: false|
+|category_id|integer|foreign_key:true, null: false|
+|brand_id|integer|foreign_key:true|
+|condition|string| null: false|
+|shipping_costs|string| null:false|
+|shipping_area_id|integer| foreign_key:true, null false|
+|days_to_ship|string| null: false|
+|price |integer|null: false|
+|comment_id|integer|foreign_key: true|
 
-* How to run the test suite
+### Association
+- has_many :item_images
+- has_many :comments
+- belongs_to :category_1st
+- belongs_to :brand
+- belongs_to :prefectures
+- belongs_to :user
+- belongs_to :rating
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## sipping_adress_table
 
-* ...
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|name_first|string|null:false|
+|name_last|string|null:false|
+|name_first_kana|string|null:false|
+|name_last_kana|string|null:false|
+|zip_code|integer|null:false|
+|prefecture_id|integer|foreign_key:true, null:false|
+|city|string|null:false|
+|street_adress|string|null:false|
+|building|string|
+|phone_number|integer|
+|user_id|integer|foreign_key:true|
+
+### Association
+- belongs_to :prefecture
+- has_many :users
+
+
+## credit_cards_table
+
+|Column|Type|Options|
+|------|----|-------|
+|ID|integer| null:false|
+|user_id|integer|foreign_key:true|
+|customer_id|integer|foreign_key:true|
+
+### Association
+- belongs_to :user
+
+## prefectures_table
+
+|Column|Type|Options|
+|------|----|-------|
+|ID|integer|null:false|
+|prefecture|string|null:false|
+
+### Association
+- belongs_to :item
+- belongs_to :shipping_adress
+
+## sns_credentials_table
+
+|Column|Type|Options|
+|------|----|-------|
+|ID|integer|null false|
+|provider|string|
+|uid|integer|
+|user_id|integer|foreign_key|
+
+### Association
+- has_many : users
+
+## ratings_table
+
+|Column|Type|Options|
+|------|----|-------|
+|ID|integer|null:false|
+|rate|integer|
+|user_id|integer|foregn_key:true|
+|item_id|integer|foregn_key:true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+## comments_table
+
+|Column|Type|Options|
+|------|----|-------|
+|ID|integer| null:false|
+|comment|text|
+|user_id|integer|foregn_key:true|
+|item_id|integer|foregn_key:true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+## brands_table
+
+|Column|Type|Options|
+|------|----|-------|
+|ID|integer| null:false|
+|brand_name|string|
+
+### Association
+- has_many : items
+
+
+## item_images_table
+
+|Column|Type|Options|
+|------|----|-------|
+|ID|integer|null:false|
+|item_id|integer|foreign_key:true, null:false|
+|image_URL|text|null:false|
+
+### Association
+- belongs_to :item
+
+## category_1st_table
+
+|Column|Type|Options|
+|------|----|-------|
+|ID|integer|null:false|
+|category_1_name|string|null:false|
+
+### Association
+- belongs_to :category_1st
+- has_many : items
+
+## category_2nd_table
+
+|Column|Type|Options|
+|------|----|-------|
+|ID|integer|null:false|
+|category_2_name|string|null:false|
+
+### Association
+- belongs_to :category_1st
+- belongs_to :category_3rd
+
+## category_3rd_table
+
+|Column|Type|Options|
+|------|----|-------|
+|ID|integer|null:false|
+|category_3_name|string|null:false|
+
+### Association
+- belongs_to :category_2nd
