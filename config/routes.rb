@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # 本番環境起動確認用ダミー
+  root to: "dummy#test"
 end
