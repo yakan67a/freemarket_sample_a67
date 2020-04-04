@@ -102,7 +102,7 @@
 |user_id|integer|foreign_key|
 
 ### Association
-- belongs_to : users
+- belongs_to : user
 
 ## ratings_table
 
@@ -162,24 +162,3 @@
 ### Association
 - has_many : items
 - has_ancestry
-
-## category_2nd_table
-
-|Column|Type|Options|
-|------|----|-------|
-|ID|integer|null:false|
-|category_2_name|string|null:false|
-
-### Association
-- belongs_to :category_1st
-- belongs_to :category_3rd
-
-## category_3rd_table
-
-|Column|Type|Options|
-|------|----|-------|
-|ID|integer|null:false|
-|category_3_name|string|null:false|
-
-### Association
-- belongs_to :category_2nd
