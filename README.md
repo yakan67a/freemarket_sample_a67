@@ -51,7 +51,7 @@
 ### Association
 - has_many :item_images
 - has_many :comments
-- belongs_to :category_1st
+- belongs_to :category
 - belongs_to :brand
 - belongs_to :prefectures
 - belongs_to :user
@@ -152,16 +152,16 @@
 ### Association
 - belongs_to :item
 
-## category_1st_table
+## category_table
 
 |Column|Type|Options|
 |------|----|-------|
 |ID|integer|null:false|
-|category_1_name|string|null:false|
+|name|string|null:false|
 
 ### Association
-- belongs_to :category_1st
 - has_many : items
+- has_ancestry
 
 ## category_2nd_table
 
