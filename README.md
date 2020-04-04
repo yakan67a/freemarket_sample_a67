@@ -14,9 +14,7 @@
 |name_last|string|null: false|
 |name_first_kana|string|null: false|
 |name_last_kana|string|null: false|
-|birth_year|integer|null: false|
-|birth_month|integer|null: false|
-|birth_day|integer|null: false|
+|birth|date|null: false|
 |profile_image|string|
 |rate_id|integer|foreign_key:true|ｖ
 |credit_card_id|integer|foreign_key:true, null:false|
@@ -28,7 +26,7 @@
 - has_many :ratings
 - has_many :comments
 - belongs_to :sns_credential
-- belongs_to :credit_card
+- has_one :credit_card
 - belongs_to :sipping_adress
 
 
@@ -93,16 +91,6 @@
 ### Association
 - belongs_to :user
 
-## prefectures_table
-
-|Column|Type|Options|
-|------|----|-------|
-|ID|integer|null:false|
-|prefecture|string|null:false|
-
-### Association
-- belongs_to :item
-- belongs_to :shipping_adress
 
 ## sns_credentials_table
 
@@ -114,16 +102,16 @@
 |user_id|integer|foreign_key|
 
 ### Association
-- has_many : users
+- belongs_to : users
 
 ## ratings_table
 
 |Column|Type|Options|
 |------|----|-------|
 |ID|integer|null:false|
-|rate|integer|
-|user_id|integer|foregn_key:true|
-|item_id|integer|foregn_key:true|
+|rate|integer|null: false|
+|user_id|integer|foregn_key:true,null: false|
+|item_id|integer|foregn_key:true,null: false|
 
 ### Association
 - belongs_to :user
@@ -134,9 +122,9 @@
 |Column|Type|Options|
 |------|----|-------|
 |ID|integer| null:false|
-|comment|text|
-|user_id|integer|foregn_key:true|
-|item_id|integer|foregn_key:true|
+|comment|text|null: false|
+|user_id|integer|foregn_key:true,null:false|
+|item_id|integer|foregn_key:true,null:false|
 
 ### Association
 - belongs_to :user
@@ -147,7 +135,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |ID|integer| null:false|
-|brand_name|string|
+|name|string|
 
 ### Association
 - has_many : items
