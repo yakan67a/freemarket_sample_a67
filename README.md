@@ -23,11 +23,11 @@
 
 ### Association
 - has_many :items
-- has_many :ratings
-- has_many :comments
-- belongs_to :sns_credential
-- has_one :credit_card
-- belongs_to :sipping_adress
+- has_many :ratings dependent: :destroy
+- has_many :comments dependent: :destroy
+- belongs_to :sns_credential dependent: :destroy
+- has_one :credit_card dependent: :destroy
+- belongs_to :sipping_adress dependent: :destroy
 
 
 ## items_table
@@ -49,13 +49,13 @@
 |comment_id|integer|foreign_key: true|
 
 ### Association
-- has_many :item_images
-- has_many :comments
+- has_many :item_images dependent: :destroy
+- has_many :comments dependent: :destroy
 - belongs_to :category
 - belongs_to :brand
 - belongs_to :prefectures
 - belongs_to :user
-- belongs_to :rating
+- belongs_to :rating dependent: :destroy
 
 
 ## sipping_adress_table
