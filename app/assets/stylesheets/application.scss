@@ -1,1 +1,10 @@
 @import "reset";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "config/variable";
+@import "mixin/mixins";
+
+//購入確認画面周り
+@import "modules/single-header";
+@import "modules/single-footer";
+@import "modules/purchase-confirmation";
