@@ -1,0 +1,9 @@
+.single-header {
+  background-color: $singlePageBackgroundColor;
+  height: 128px;
+  text-align: center;
+
+  &__logo {
+    padding-top: 40px;
+  }
+}
