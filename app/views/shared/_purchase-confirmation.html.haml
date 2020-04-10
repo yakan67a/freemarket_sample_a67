@@ -1,0 +1,39 @@
+.single-main
+  .single-main-content
+    .single-main-content__head
+      購入内容の確認
+    .single-main-content__item
+      .single-main-content__item--inner
+        .buy-item-box
+          .buy-item-box__image
+            = image_tag "material/icon/icon_brand.png", size: "80x80"
+          .buy-item-box__detail
+            .buy-item-box__detail--top
+              水色のバターサンド
+            .buy-item-box__detail--middle
+              %span
+                ¥900
+              %span.item-shipping-fee
+                (税込)送料込み
+    .single-main-content__item
+      .single-main-content__item--inner
+        = form_with url: "#", class: "buy-form" do |form|
+          .buy-form__title
+            .buy-form__title--left
+              支払い金額
+            .buy-form__title--right
+              ¥900
+          .buy-form__main
+            支払い方法
+            .buy-form__main--inner
+              = link_to "#", class: "resister-link" do
+                %i.fa.fa-plus-circle
+                登録してください
+          .buy-form__main
+            配送先
+            .buy-form__main--inner
+              = link_to "#", class: "resister-link" do
+                %i.fa.fa-plus-circle
+                登録してください
+          .buy-form__submit
+            = form.submit class: "buy-button", value: "購入する"

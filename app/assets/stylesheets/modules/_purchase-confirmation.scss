@@ -1,0 +1,97 @@
+.single-main {
+  background-color: $singlePageBackgroundColor;
+
+  .single-main-content {
+    background-color: white;
+    width: 700px;
+    margin: 0 auto;
+
+    &__head {
+      font-size: 22px;
+      font-weight: bold;
+      padding: 32px;
+      text-align: center;
+    }
+
+    &__item {
+      border-top: $singlePageBorder;
+      padding: 32px 16px;
+
+      &--inner {
+        max-width: 343px;
+        margin: 0 auto;
+
+        .buy-item-box {
+          @include flex-start();
+
+          &__image {
+          }
+
+          &__detail {
+            margin-left: 16px;
+
+            &--top {
+              font-size: 14px;
+              padding: 0 0 8px;
+            }
+
+            &--middle {
+              font-size: 15px;
+              font-weight: bold;
+            }
+          }
+        }
+
+        .buy-form {
+
+          &__title {
+            @include space-between();
+            line-height: 30px;
+            padding-bottom: 32px;
+            border-bottom: $singlePageBorder;
+
+            &--left {
+              font-size: 18px;
+              font-weight: bold;
+            }
+
+            &--right {
+              font-size: 30px;
+              font-weight: bold;
+            }
+          }
+
+          &__main {
+            padding: 32px 0;
+            border-bottom: $singlePageBorder;
+            font-size: 14px;
+            font-weight: bold;
+
+            &--inner {
+              margin-top: 8px;
+
+              .resister-link {
+                color: #0099e8;
+                text-decoration: none;
+                font-weight: normal;
+              }
+            }
+          }
+
+          &__submit {
+            padding-top: 32px;
+
+            .buy-button {
+              font-size: 14px;
+              width: 100%;
+              color: white;
+              text-align: center;
+              background-color: #888;
+              line-height: 48px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
