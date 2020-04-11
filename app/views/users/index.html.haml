@@ -1,0 +1,13 @@
+.header
+  .header__image
+    = image_tag 'material/logo/logo.png', size: "185x49"
+.userCreate
+  .userCreate__index
+    .userCreate__index__title
+      新規登録画面
+    %ul.userCreate__index__pattern
+      %li.userCreate__index__pattern__mail
+        = link_to new_user_registration_path, method: :get do
+          .userCreate__index__pattern__mail--login
+            メールアドレスで登録
+.footer

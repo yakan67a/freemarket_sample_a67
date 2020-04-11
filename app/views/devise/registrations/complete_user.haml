@@ -1,0 +1,17 @@
+.header
+  .header__image
+    = image_tag 'material/logo/logo.png', size: "185x49"
+.userCreate
+  = render "devise/registrations/complete_header"
+  .userCreate__usercomp
+    .userCreate__usercomp__title
+      会員登録完了
+    .userCreate__usercomp__body
+      .userCreate__usercomp__body__message
+        ありがとうございます。
+        %br 会員登録が完了しました。
+      .userCreate__usercomp__body__start
+        = link_to root_path do
+          .userCreate__usercomp__body__start--button
+            フリマをはじめる
+.footer

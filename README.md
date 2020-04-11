@@ -7,7 +7,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false|
-|nickname|string|null: false|
+|nickname|string|unique: true, null: false|
 |email|string|unique:true, null false|
 |password|string|null: false|
 |name_first|string|null: false|
@@ -16,6 +16,7 @@
 |name_last_kana|string|null: false|
 |birth|date|null: false|
 |profile_image|string|
+|profile|text|
 |rate_id|integer|foreign_key:true|ｖ
 |credit_card_id|integer|foreign_key:true, null:false|
 |profit|integer|
@@ -27,7 +28,7 @@
 - has_many :comments dependent: :destroy
 - belongs_to :sns_credential dependent: :destroy
 - has_one :credit_card dependent: :destroy
-- belongs_to :sipping_adress dependent: :destroy
+- has_one :shipping_address dependent: :destroy
 
 
 ## items_table
@@ -58,7 +59,7 @@
 - belongs_to :rating dependent: :destroy
 
 
-## sipping_adress_table
+## shipping_address_table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -67,17 +68,17 @@
 |name_last|string|null:false|
 |name_first_kana|string|null:false|
 |name_last_kana|string|null:false|
-|zip_code|integer|null:false|
+|zip_code|string|null:false|
 |prefecture_id|integer|foreign_key:true, null:false|
 |city|string|null:false|
 |street_adress|string|null:false|
 |building|string|
-|phone_number|integer|
+|phone_number|string|
 |user_id|integer|foreign_key:true|
 
 ### Association
 - belongs_to :prefecture
-- has_many :users
+- belongs_to :users
 
 
 ## credit_cards_table

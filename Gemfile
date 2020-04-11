@@ -81,11 +81,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'devise'
+gem 'active_hash'
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'enum_help'
+gem 'font-awesome-sass', '~> 5.4.1'
 
 # ページネーション不要なら切る
 gem 'kaminari'

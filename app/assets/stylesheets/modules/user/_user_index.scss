@@ -1,0 +1,19 @@
+.userCreate {
+  @include user_background;
+  &__index {
+    @include user_input_box;
+    &__title {
+      @include user_title;
+    }
+    &__pattern {
+      padding: 20px 0;
+      &__mail {
+        @include user_button;
+        &--login {
+          color: white;
+          line-height: 50px;
+        }
+      }
+    }
+  }
+}
