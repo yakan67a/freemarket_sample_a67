@@ -15,6 +15,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :profile_image
       t.text :profile
       t.integer :profit
+      t.integer :rate_id,           foreign_key: true
+      t.integer :credit_card_id,    foreign_key: true
+      t.integer :comment_id,        foreign_key: true
 
       ## Recoverable
       t.string   :reset_password_token
