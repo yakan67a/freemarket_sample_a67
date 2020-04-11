@@ -86,6 +86,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'enum_help'
+gem 'font-awesome-rails'
 
 # ページネーション不要なら切る
 gem 'kaminari'
