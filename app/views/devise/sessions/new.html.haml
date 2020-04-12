@@ -12,6 +12,8 @@
   .userLogin__main
     .userLogin__main__loginbox
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        - flash.each do |key, value|
+          = content_tag :div, value, class: key
         .userLogin__main__loginbox__title
           メールアドレスでログイン
         .userLogin__main__loginbox__form
