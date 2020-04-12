@@ -9,5 +9,7 @@
       %li.userCreate__index__pattern__mail
         = link_to new_user_registration_path, method: :get do
           .userCreate__index__pattern__mail--login
+            = icon('far', 'envelope', class: "userCreate__index__pattern__mail--icon")
+            %span<>
             メールアドレスで登録
 .footer

@@ -35,16 +35,16 @@
           %h3 本人確認
         .userCreate__userinfo__body__formbox
           .userCreate__userinfo__body__formbox__title
-            = f.label :お名前
+            = f.label :name, "お名前(全角)"
             %span 必須
           .userCreate__userinfo__body__formbox__form
             .userCreate__userinfo__body__formbox__form__harfword
-              = f.text_field :name_last, placeholder: '例）田中'
+              = f.text_field :name_last, placeholder: '例）田中', pattern: "[^\x20-\x7E]*"
             .userCreate__userinfo__body__formbox__form__harfword
-              = f.text_field :name_first, placeholder: '例）太郎'
+              = f.text_field :name_first, placeholder: '例）太郎', pattern: "[^\x20-\x7E]*"
         .userCreate__userinfo__body__formbox
           .userCreate__userinfo__body__formbox__title
-            = f.label :お名前カナ
+            = f.label :name_kana, "フリガナ(全角カナ)"
             %span 必須
           .userCreate__userinfo__body__formbox__form
             .userCreate__userinfo__body__formbox__form__harfword

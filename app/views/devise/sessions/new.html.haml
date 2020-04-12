@@ -17,7 +17,7 @@
         .userLogin__main__loginbox__form
           = f.email_field :email, placeholder: 'メールアドレス',  autofocus: true
         .userLogin__main__loginbox__form
-          = f.password_field :password, placeholder: 'パスワード'
+          = f.password_field :password, placeholder: 'パスワード', pattern: ".{7,}"
         .userLogin__main__loginbox__login--button
           = f.submit "ログイン"
 .footer

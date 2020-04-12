@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :nickname, :name_first, :name_last, :name_first_kana, :name_last_kana, :birth, presence: true
   validates :nickname, uniqueness: true
+  validates :password, format: { with: /\A[a-z0-9]+\z/i }
   has_one :shipping_address, dependent: :destroy
 end

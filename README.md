@@ -71,7 +71,7 @@
 |zip_code|string|null:false|
 |prefecture_id|integer|foreign_key:true, null:false|
 |city|string|null:false|
-|street_adress|string|null:false|
+|street_address|string|null:false|
 |building|string|
 |phone_number|string|
 |user_id|integer|foreign_key:true|
