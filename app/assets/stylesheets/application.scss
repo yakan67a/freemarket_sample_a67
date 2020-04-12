@@ -1,3 +1,15 @@
 @import "reset";
 @import "config/variables";
 @import "mixin/mixins";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "mixin/user_create";
+
+@import "modules/user/header_footer";
+
+@import "modules/user/user_index";
+@import "modules/user/user_create_header";
+@import "modules/user/user_create";
+@import "modules/user/complete_user";
+@import "modules/user/user_login";
+@import "modules/flash";

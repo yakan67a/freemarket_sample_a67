@@ -1,0 +1,20 @@
+.userCreate__usercomp {
+  @include user_input_box;
+  &__title {
+    @include user_title;
+  }
+  &__body {
+    padding: 20px 0;
+    &__message {
+      color: #777777;
+      padding: 40px 0;
+    }
+    &__start {
+      @include user_button;
+      &--button {
+        color: white;
+        line-height: 50px;
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@mixin user_background {
+  background-color: #eeeeee;
+  text-align: center;
+}
+
+@mixin user_input_box {
+  width: 700px;
+  background-color: white;
+  margin: auto;
+  padding: 30px 0;
+}
+
+@mixin user_title {
+  padding: 0 0 30px 0;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+@mixin user_button {
+  width: 300px;
+  height: 50px;
+  margin: 30px auto;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #3CCACE;
+}
+
+@mixin user_form_box {
+  margin: auto;
+  padding: 20px 200px;
+  font-size: 14px;
+}
+
+@mixin form_box {
+  input {
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #bbbbbb;
+  }
+}
+
+
