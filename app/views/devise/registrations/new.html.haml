@@ -39,18 +39,18 @@
             %span 必須
           .userCreate__userinfo__body__formbox__form
             .userCreate__userinfo__body__formbox__form__harfword
-              = f.text_field :name_last, placeholder: '例）田中', pattern: "[^\x20-\x7E]*"
+              = f.text_field :name_last, placeholder: '例）田中'
             .userCreate__userinfo__body__formbox__form__harfword
-              = f.text_field :name_first, placeholder: '例）太郎', pattern: "[^\x20-\x7E]*"
+              = f.text_field :name_first, placeholder: '例）太郎'
         .userCreate__userinfo__body__formbox
           .userCreate__userinfo__body__formbox__title
             = f.label :name_kana, "フリガナ(全角カナ)"
             %span 必須
           .userCreate__userinfo__body__formbox__form
             .userCreate__userinfo__body__formbox__form__harfword
-              = f.text_field :name_last_kana, placeholder: '例）タナカ', pattern: "[\u30A1-\u30FC]*"
+              = f.text_field :name_last_kana, placeholder: '例）タナカ'
             .userCreate__userinfo__body__formbox__form__harfword
-              = f.text_field :name_first_kana, placeholder: '例）タロウ', pattern: "[\u30A1-\u30FC]*"
+              = f.text_field :name_first_kana, placeholder: '例）タロウ'
         .userCreate__userinfo__body__formbox
           .userCreate__userinfo__body__formbox__title
             = f.label :birth, "生年月日"
