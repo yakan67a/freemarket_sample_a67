@@ -36,8 +36,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_shipping_address and return
     end
     @user.build_shipping_address(@shipping_address.attributes)
-    @user.save
-    sign_in(:user, @user)
+    if @user.save
+      sign_in(:user, @user)
+    else
+      render :new
+    end
   end
 
   # GET /resource/edit
