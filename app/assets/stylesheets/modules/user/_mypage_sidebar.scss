@@ -1,0 +1,74 @@
+.mypage {
+  background-color: #eeeeee;
+  display: flex;
+}
+.mypage__sidebar {
+  background-color: white;
+  margin: 30px 30px 30px 100px;
+  font-size: 14px;
+  &__top {
+    &__list {
+      width: 250px;
+      &__mypage {
+        @include side_bar_fram;
+        @include side_bar_item;
+      }
+      &__rate {
+        @include side_bar_fram;
+        @include side_bar_item;
+      }
+    }
+  }
+  &__item {
+    &__title {
+      @include side_bar_title;
+    }
+    &__list {
+      width: 250px;
+      &__sale {
+        @include side_bar_fram;
+        @include side_bar_item;
+      }
+      &__saleItem {
+        @include side_bar_fram;
+        @include side_bar_item;
+      }
+      &__buyItem {
+        @include side_bar_fram;
+        @include side_bar_item;
+      }
+      &__favoriteItem {
+        @include side_bar_fram;
+        @include side_bar_item;
+      }
+    }
+  }
+  &__user {
+    &__title {
+      @include side_bar_title;
+    }
+    &__list {
+      width: 250px;
+      &__profile {
+        @include side_bar_fram;
+        @include side_bar_item;
+      }
+      &__shipping {
+        @include side_bar_fram;
+        @include side_bar_item;
+      }
+      &__MailPassword {
+        @include side_bar_fram;
+        @include side_bar_item;
+      }
+      &__creditcard {
+        @include side_bar_fram;
+        @include side_bar_item;
+      }
+      &__logout {
+        @include side_bar_fram;
+        @include side_bar_item;
+      }
+    }
+  }
+}
