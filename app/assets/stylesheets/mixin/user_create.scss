@@ -68,3 +68,23 @@
     color: #444444;
   }
 }
+
+@mixin main_title_style {
+  font-weight: bold;
+  padding: 5px;
+}
+
+@mixin main_view_flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-bottom: 5px;  
+}
+
+@mixin main_view_items {
+  height: 180px;
+  width: 180px;
+  margin: 5px;
+  background-color: #cccccc;
+  border: 1px solid #3CCACE;
+}
