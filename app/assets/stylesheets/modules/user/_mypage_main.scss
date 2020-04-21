@@ -7,6 +7,7 @@
       @include main_title_style;
     }
     &__profileBox {
+      padding: 20px 0 50px 0;
       &__profile--img {
         margin: auto;
         height: 100px;
@@ -36,43 +37,40 @@
       }
     }
   }
-  &__favorite {
-    background-color: white;
-    margin: 50px 0;
-    &__title {
-      @include main_title_style;
-    }
-    &__box {
-      @include main_view_flexbox;
-      &__item {
-        @include main_view_items;
-      }
-    }
-  }
-  &__itemsBox {
-    &__buyitems {
-      background-color: white;
-      margin: 50px 0;
+// JQueryタブ切り替え
+  &__container {
+    &__menu {
+      background-color: #dddddd;
+      margin: 50px 0 0 0;
+      display: flex;
+      justify-content: space-around;
       &__title {
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
+      li.active {
         @include main_title_style;
       }
+      li:hover {
+        color: #777777;
+        font-weight: bold;
+      }
+    }
+    &__itemBox {
+      background-color: white;
+      padding: 50px 20px;
       &__list {
-        @include main_view_flexbox;
         &__item {
           @include main_view_items;
         }
       }
-    }
-    &__saleitems {
-      background-color: white;
-      &__title {
-        @include main_title_style;
-      }
-      &__list {
+      li.show {
         @include main_view_flexbox;
-        &__item {
-          @include main_view_items;
-        }
+      }
+      li {
+        display: none;
       }
     }
   }

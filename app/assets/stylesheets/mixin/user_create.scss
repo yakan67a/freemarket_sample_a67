@@ -69,9 +69,20 @@
   }
 }
 
-@mixin main_title_style {
+@mixin side_bar_item_hover {
+  color: #222222;
   font-weight: bold;
-  padding: 5px;
+  i {
+    color: #222222;
+    padding-right: 18px;
+  }
+}
+
+@mixin main_title_style {
+  background-color: white;
+  font-weight: bold;
+  border-top: 1px solid #3CCACE;
+  padding: 10px 10px;
 }
 
 @mixin main_view_flexbox {
