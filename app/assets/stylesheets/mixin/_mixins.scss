@@ -1,0 +1,18 @@
+@mixin home_banner_btn{
+  display: flex;
+  margin: 20px auto 0;
+  a {
+    transition: 0.5s ;
+  }
+  a:hover {
+    opacity: 0.5 ;
+  }
+  &__googleBtn{
+    margin-left: 10px;
+  }
+}
+
+@mixin home_fontStyle{
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+  color: #fff;
+}
