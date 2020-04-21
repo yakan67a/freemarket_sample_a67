@@ -1,0 +1,26 @@
+%header.headerMain
+  .headerBox
+    .headerBox__top
+      .headerBox__top__logo
+        = image_tag src="/assets/material/logo/logo.png", size: "140x40"
+      .headerBox__top__searchBox
+        %input.headerBox__top__searchBox__form{:name => "search", :placeholder => "キーワードから探す"}/
+        .headerBox__top__searchBox__icon
+          = image_tag src="/assets/material/icon/icon-search 1.png", size: "20x20"
+
+
+    .headerBox__bottom
+      .headerBox__bottom__left
+        .headerBox__bottom__left__category カテゴリー
+        .headerBox__bottom__left__brand ブランド
+      %a.headerBox__bottom__right
+        - if user_signed_in?
+          .headerBox__bottom__right__login
+          = link_to "マイページ", "#"
+          .headerBox__bottom__right__signup
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
+        - else
+          .headerBox__bottom__right__login
+            = link_to "ログイン", new_user_session_path, method: :get
+          .headerBox__bottom__right__signup
+            = link_to "新規登録", users_path
