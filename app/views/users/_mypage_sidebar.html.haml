@@ -2,7 +2,7 @@
   .mypage__sidebar__box
     %ul.mypage__sidebar__box__list
       .mypage__sidebar__box__list__item#mypage
-        = link_to "#" do
+        = link_to "/users/#{current_user.id}" do
           マイページ
           = icon('fa', 'chevron-right')
       %li.mypage__sidebar__box__list__item#rate
