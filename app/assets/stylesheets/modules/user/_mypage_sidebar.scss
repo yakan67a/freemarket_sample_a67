@@ -3,10 +3,11 @@
   display: flex;
 }
 .mypage__sidebar {
-  background-color: white;
+  // background-color: white;
   margin: 30px 30px 30px 100px;
   font-size: 14px;
   &__box {
+    background-color: white;
     &__title {
       @include side_bar_title;
     }
