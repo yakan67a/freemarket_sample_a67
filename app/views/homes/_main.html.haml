@@ -6,9 +6,9 @@
         FURIMAはだれでもかんたんに出品・購入できる<br>フリマアプリです
       .mainVisual-desc__btn
         .mainVisual-desc__btn__appleBtn
-          = link_to image_tag(src ="/assets/material/icon/appStoreLogo.svg",size:"180x54"),"#",crass:"img"
+          = link_to image_tag('/assets/material/icon/appStoreLogo.svg', height: '54', width: '180', ),"#",crass:"img"
         .mainVisual-desc__btn__googleBtn
-          = link_to image_tag(src ="/assets/material/icon/googlePlayLogo.svg",size:"180x54"),"#",crass:"img"
+          = link_to image_tag('/assets/material/icon/googlePlayLogo.svg', height: '54', width: '180', ),"#",crass:"img"
   
   .reason
     %h2.reason__head FURIMAが選ばれる3つの理由
@@ -16,7 +16,7 @@
       %li.reason-desc__list
         .reason-desc__image
           %span.number 1
-          = image_tag src = "/assets/material/pict/pict-reason-01.jpg", size:"306x306"
+          = image_tag '/assets/material/pict/pict-reason-01.jpg', height: '306', width: '306', class: 'img'
         %h3.reason-desc__headline
           %span.color 3分
           ですぐに出品
@@ -24,7 +24,7 @@
       %li.reason-desc__list
         .reason-desc__image
           %span.number 2
-          = image_tag src = "/assets/material/pict/pict-reason-02.jpg", size:"306x306"
+          = image_tag '/assets/material/pict/pict-reason-02.jpg', height: '306', width: '306', class: 'img'
         %h3.reason-desc__headline
           %span.color シンプル
           で使いやすい
@@ -32,7 +32,7 @@
       %li.reason-desc__list
         .reason-desc__image
           %span.number 3
-          = image_tag src = "/assets/material/pict/pict-reason-03.jpg", size:"306x306"
+          = image_tag '/assets/material/pict/pict-reason-03.jpg', height: '306', width: '306', class: 'img'
         %h3.reason-desc__headline
           手数料
           %span.color 業界最安
@@ -48,28 +48,28 @@
         ほしかったあの商品に出会えるかもしれません。<br>
       .middleBanner-desc__btn
         .middleBanner-desc__btn__appleBtn
-        = link_to image_tag(src ="/assets/material/icon/appStoreLogo.svg",size:"180x54"),"#",crass:"img"
+        = link_to image_tag('/assets/material/icon/appStoreLogo.svg', height: '54', width: '180', ),"#",crass:"img"
         .middleBanner-desc__btn__googleBtn
-        = link_to image_tag(src ="/assets/material/icon/googlePlayLogo.svg",size:"180x54"),"#",crass:"img"
+        = link_to image_tag('/assets/material/icon/googlePlayLogo.svg', height: '54', width: '180', ),"#",crass:"img"
 
   .feature
     %h2.feature__head FURIMAの特徴
     %ul.feature-desc
       %li.feature-desc__list
         .feature-desc__image
-          = image_tag src = "/assets/material/icon/icon-01.png",width:"200"
+          = image_tag '/assets/material/icon/icon-01.png', width: '200', class: 'img'
         %h3.feature-desc__headline
           簡単に売り買いできる
         .feature-desc__text スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       %li.feature-desc__list
         .feature-desc__image
-          = image_tag src = "/assets/material/icon/icon-03.png",width:"200"
+          = image_tag '/assets/material/icon/icon-03.png', width: '200', class: 'img'
         %h3.feature-desc__headline
           売上金は即日振込みに対応
         .feature-desc__text 午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
       %li.feature-desc__list
         .feature-desc__image
-          = image_tag src = "/assets/material/icon/icon-04.png",width:"200"
+          = image_tag '/assets/material/icon/icon-04.png', width: '200', class: 'img'
         %h3.feature-desc__headline
           様々な支払いに対応
         .feature-desc__text お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
@@ -82,9 +82,9 @@
         = link_to "#" do
           .containerBox-list
             .containerBox-list__image
-              = image_tag src = "/assets/material/pict/a007.png"
+              = image_tag '/assets/material/pict/a001.png', class: 'img'
             .containerBox-list__detail
-              %h3.name product3
+              %h3.name product1
               %ul.desc
                 %li.price 30000円
                 %li.like
@@ -93,9 +93,9 @@
         = link_to "#" do
           .containerBox-list
             .containerBox-list__image
-              = image_tag src = "/assets/material/pict/a007.png"
+              = image_tag '/assets/material/pict/a004.png', class: 'img'
             .containerBox-list__detail
-              %h3.name product3
+              %h3.name product2
               %ul.desc
                 %li.price 30000円
                 %li.like
@@ -104,7 +104,7 @@
         = link_to "#" do
           .containerBox-list
             .containerBox-list__image
-              = image_tag src = "/assets/material/pict/a007.png"
+              = image_tag '/assets/material/pict/a007.png', class: 'img'
             .containerBox-list__detail
               %h3.name product3
               %ul.desc
@@ -120,6 +120,6 @@
       .bottomBanner-desc__text 今すぐ無料ダウンロード！
       .bottomBanner-desc__btn
         .bottomBanner-desc__btn__appleBtn
-        = link_to image_tag(src ="/assets/material/icon/appStoreLogo.svg",size:"180x54"),"#",crass:"img"
+        = link_to image_tag('/assets/material/icon/appStoreLogo.svg', height: '54', width: '180', ),"#",crass:"img"
         .bottomBanner-desc__btn__googleBtn
-        = link_to image_tag(src ="/assets/material/icon/googlePlayLogo.svg",size:"180x54"),"#",crass:"img"
+        = link_to image_tag('/assets/material/icon/googlePlayLogo.svg', height: '54', width: '180', ),"#",crass:"img"

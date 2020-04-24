@@ -2,11 +2,11 @@
   .headerBox
     .headerBox__top
       .headerBox__top__logo
-        = image_tag src="/assets/material/logo/logo.png", size: "140x40"
+        = image_tag '/assets/material/logo/logo.png', height: '40', width: '140', class: 'img'
       .headerBox__top__searchBox
         %input.headerBox__top__searchBox__form{:name => "search", :placeholder => "キーワードから探す"}/
         .headerBox__top__searchBox__icon
-          = image_tag src="/assets/material/icon/icon-search 1.png", size: "20x20"
+          = image_tag '/assets/material/icon/icon-search 1.png', height: '20', width: '20'
 
 
     .headerBox__bottom
