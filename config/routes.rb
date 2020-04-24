@@ -6,8 +6,6 @@ Rails.application.routes.draw do
     get 'shipping_addresses', to: 'users/registrations#new_shipping_address'
     post 'shipping_addresses', to: 'users/registrations#complete_user'
   end
-  # 本番環境起動確認用ダミー
-  #　root to: "dummy#test"
 
   root to: "homes#index"
 
