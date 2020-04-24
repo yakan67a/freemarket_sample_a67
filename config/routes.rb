@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     post 'shipping_addresses', to: 'users/registrations#complete_user'
   end
   # 本番環境起動確認用ダミー
-  root to: "dummy#test"
+  #　root to: "dummy#test"
+
+  root to: "homes#index"
 
   resources :users, only: :index
 end

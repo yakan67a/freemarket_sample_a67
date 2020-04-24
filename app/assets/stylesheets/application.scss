@@ -3,6 +3,9 @@
 @import "mixin/mixins";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+@import "modules/home/index";
+
 @import "mixin/user_create";
 
 @import "modules/user/header_footer";
