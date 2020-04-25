@@ -1,6 +1,5 @@
-.header
-  .header__image
-    = image_tag 'material/logo/logo.png', size: "185x49"
+= render "shared/single_header"
+
 .userCreate
   = render "devise/registrations/shipping_header"
   .userCreate__userinfo
@@ -66,4 +65,5 @@
         .userCreate__userinfo__body__formbox
           .userCreate__userinfo__body__formbox__next--button
             = f.submit "確認"
-.footer
+
+= render "shared/single_footer"

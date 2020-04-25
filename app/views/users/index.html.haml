@@ -1,6 +1,5 @@
-.header
-  .header__image
-    = image_tag 'material/logo/logo.png', size: "185x49"
+= render "shared/single_header"
+
 .userCreate
   .userCreate__index
     .userCreate__index__title
@@ -12,4 +11,5 @@
             = icon('far', 'envelope', class: "userCreate__index__pattern__mail--icon")
             %span<>
             メールアドレスで登録
-.footer
+
+= render "shared/single_footer"
