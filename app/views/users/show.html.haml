@@ -1,5 +1,7 @@
-.mypage
-  -# = render 'headerMain'
-  = render "users/mypage_sidebar"
-  = render "users/mypage_main"
-  -# = render 'footerMain'
+= render 'homes/headerMain'
+.mainbox
+  .mypage
+    = render "users/mypage_sidebar"
+    = render "users/mypage_main"
+= render 'homes/footerMain'
+= render 'homes/sellBtn'
