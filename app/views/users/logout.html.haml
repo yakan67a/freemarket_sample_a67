@@ -1,7 +1,10 @@
-.mypage
-  = render "users/mypage_sidebar"
-  .mypageLogout
-    .mypageLogout__title
-      = link_to destroy_user_session_path, method: :delete do
-        .mypageLogout__title--button
-          ログアウト
+= render 'homes/headerMain'
+.mainbox
+  .mypage
+    = render "users/mypage_sidebar"
+    .mypageLogout
+      .mypageLogout__title
+        = link_to destroy_user_session_path, method: :delete do
+          .mypageLogout__title--button
+            ログアウト
+= render 'homes/footerMain'

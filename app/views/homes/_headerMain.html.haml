@@ -2,7 +2,8 @@
   .headerBox
     .headerBox__top
       .headerBox__top__logo
-        = image_tag 'material/logo/logo.png', height: '40', width: '140', class: 'img'
+        = link_to root_path do
+          = image_tag 'material/logo/logo.png', height: '40', width: '140', class: 'img'
       .headerBox__top__searchBox
         %input.headerBox__top__searchBox__form{:name => "search", :placeholder => "キーワードから探す"}/
         .headerBox__top__searchBox__icon
