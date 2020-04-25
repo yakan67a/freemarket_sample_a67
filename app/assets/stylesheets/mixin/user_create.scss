@@ -1,3 +1,4 @@
+// 新規登録、ログイン関連
 @mixin user_background {
   background-color: #eeeeee;
   text-align: center;
@@ -41,4 +42,60 @@
   }
 }
 
+// マイページ関連
+@mixin side_bar_title {
+  background-color: #eeeeee;
+  padding: 20px 0 5px 0;
+  font-weight: bold;
+}
 
+@mixin side_bar_fram {
+  border-bottom: 1px solid #eeeeee;
+  position: relative;
+}
+
+@mixin side_bar_item {
+  i {
+  position: absolute;
+  right: 0;
+  top: 13px;
+  padding-right: 20px;
+  color: #bbbbbb;
+  }
+  a {
+    padding: 10px 5px 10px 15px;
+    display: block;
+    color: #444444;
+  }
+}
+
+@mixin side_bar_item_hover {
+  color: #222222;
+  font-weight: bold;
+  i {
+    color: #222222;
+    padding-right: 18px;
+  }
+}
+
+@mixin main_title_style {
+  background-color: white;
+  font-weight: bold;
+  border-top: 1px solid #3CCACE;
+  padding: 10px 10px;
+}
+
+@mixin main_view_flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-bottom: 5px;  
+}
+
+@mixin main_view_items {
+  height: 180px;
+  width: 180px;
+  margin: 5px;
+  background-color: #cccccc;
+  border: 1px solid #3CCACE;
+}
