@@ -1,0 +1,53 @@
+.mypage__sidebar
+  .mypage__sidebar__box
+    %ul.mypage__sidebar__box__list
+      .mypage__sidebar__box__list__item#mypage
+        = link_to "/users/#{current_user.id}" do
+          マイページ
+          = icon('fa', 'chevron-right')
+      %li.mypage__sidebar__box__list__item#rate
+        = link_to "#" do
+          評価
+          = icon('fa', 'chevron-right')
+  .mypage__sidebar__box
+    %h4.mypage__sidebar__box__title 商品
+    %ul.mypage__sidebar__box__list
+      %li.mypage__sidebar__box__list__item#sale
+        = link_to "#" do
+          出品する
+          = icon('fa', 'chevron-right')
+      %li.mypage__sidebar__box__list__item#saleItem
+        = link_to "#" do
+          出品した商品
+          = icon('fa', 'chevron-right')
+      %li.mypage__sidebar__box__list__item#buyItem
+        = link_to "#" do
+          購入した商品
+          = icon('fa', 'chevron-right')
+      %li.mypage__sidebar__box__list__item#favoriteItem
+        = link_to "#" do
+          お気に入り
+          = icon('fa', 'chevron-right')
+  .mypage__sidebar__box
+    %h4.mypage__sidebar__box__title 設定
+    %ul.mypage__sidebar__box__list
+      %li.mypage__sidebar__box__list__item#profile
+        = link_to "#" do
+          プロフィール
+          = icon('fa', 'chevron-right')
+      %li.mypage__sidebar__box__list__item#shipping
+        = link_to "#" do
+          送付先変更
+          = icon('fa', 'chevron-right')
+      %li.mypage__sidebar__box__list__item#MailPassword
+        = link_to "#" do
+          メール・パスワード変更
+          = icon('fa', 'chevron-right')
+      %li.mypage__sidebar__box__list__item#creditcard
+        = link_to "#" do
+          お支払い方法設定
+          = icon('fa', 'chevron-right')
+      %li.mypage__sidebar__box__list__item#logout
+        = link_to logout_users_path do
+          ログアウト
+          = icon('fa', 'chevron-right')

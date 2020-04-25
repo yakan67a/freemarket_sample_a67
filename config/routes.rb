@@ -11,5 +11,10 @@ Rails.application.routes.draw do
 
   root to: "homes#index"
 
-  resources :users, only: :index
+  resources :users, only: [:index, :show] do
+    collection do
+      get 'logout'
+    end
+  end
+
 end

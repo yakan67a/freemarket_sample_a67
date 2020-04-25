@@ -1,0 +1,77 @@
+.mypage__main {
+  margin: 30px 100px 30px 0;
+  width: 100vw;
+  &__top {
+    background-color: white;
+    &__title {
+      @include main_title_style;
+    }
+    &__profileBox {
+      padding: 20px 0 50px 0;
+      &__profile--img {
+        margin: auto;
+        height: 100px;
+        width: 100px;
+        border-radius: 50px;
+        line-height: 100px;
+        background-color: #3CCACE;
+        color: white;
+      }
+      &__info {
+        text-align: center;
+        color: #444444;
+        font-size: 14px;
+        &__top {
+          display: flex;
+          justify-content: center;
+          &__rate {
+            padding: 10px;
+          }
+          &__items {
+            padding: 10px;
+          }
+        }
+        &__profit {
+          padding: 0 10px 20px 10px;
+        }
+      }
+    }
+  }
+// JQueryタブ切り替え
+  &__container {
+    &__menu {
+      background-color: #dddddd;
+      margin: 50px 0 0 0;
+      display: flex;
+      justify-content: space-around;
+      &__title {
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
+      li.active {
+        @include main_title_style;
+      }
+      li:hover {
+        color: #777777;
+        font-weight: bold;
+      }
+    }
+    &__itemBox {
+      background-color: white;
+      padding: 50px 20px;
+      &__list {
+        &__item {
+          @include main_view_items;
+        }
+      }
+      li.show {
+        @include main_view_flexbox;
+      }
+      li {
+        display: none;
+      }
+    }
+  }
+}
