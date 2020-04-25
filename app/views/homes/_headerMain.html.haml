@@ -16,9 +16,9 @@
       %a.headerBox__bottom__right
         - if user_signed_in?
           .headerBox__bottom__right__login
-          = link_to "マイページ", "#"
+            = link_to "マイページ", "/users/#{current_user.id}"
           .headerBox__bottom__right__signup
-          = link_to "ログアウト", destroy_user_session_path, method: :delete
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
         - else
           .headerBox__bottom__right__login
             = link_to "ログイン", new_user_session_path, method: :get
