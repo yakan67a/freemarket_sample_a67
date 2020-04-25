@@ -1,5 +1,6 @@
 .userCreate {
   @include user_background;
+  padding-bottom: 180px;
   &__index {
     @include user_input_box;
     &__title {
