@@ -1,13 +1,14 @@
 .notice {
-  color: #FFCC33;
-  text-align: center;
+  @include flash_message;
+  background-color: #3CCACE;
 }
 
 .alert {
-  color: #FF3300;
-  text-align: center;
+  @include flash_message;
+  background-color: #FF0000;
 }
 
 #error_explanation {
-  color: #FF3300;
+  @include flash_message;
+  background-color: #FF0000;
 }

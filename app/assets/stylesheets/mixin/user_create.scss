@@ -7,7 +7,7 @@
 @mixin user_input_box {
   width: 700px;
   background-color: white;
-  margin: auto;
+  margin: 0 auto;
   padding: 30px 0;
 }
 
@@ -28,8 +28,9 @@
 }
 
 @mixin user_form_box {
-  margin: auto;
-  padding: 20px 200px;
+  margin: 0 auto;
+  padding: 10px auto;
+  width: 300px;
   font-size: 14px;
 }
 
@@ -98,4 +99,12 @@
   margin: 5px;
   background-color: #cccccc;
   border: 1px solid #3CCACE;
+}
+
+@mixin flash_message {
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  color: white;
 }
