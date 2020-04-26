@@ -1,6 +1,5 @@
-.header
-  .header__image
-    = image_tag 'material/logo/logo.png', size: "185x49"
+= render "shared/single_header"
+
 .userCreate
   = render "devise/registrations/complete_header"
   .userCreate__usercomp
@@ -14,4 +13,5 @@
         = link_to root_path do
           .userCreate__usercomp__body__start--button
             フリマをはじめる
-.footer
+
+= render "shared/single_footer"

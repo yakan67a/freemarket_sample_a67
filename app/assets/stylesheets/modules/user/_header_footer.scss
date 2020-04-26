@@ -1,12 +1,40 @@
 .header {
   background-color: #eeeeee;
+  height: 128px;
+  text-align: center;
+
   &__image {
-    margin: 0 auto;
-    max-width: 50%;
-    text-align: center;
+    padding-top: 40px;
   }
 }
 .footer {
   background-color: #eeeeee;
-  height: 50px;
+  text-align: center;
+  height: 220px;
+  padding: 40px 0;
+
+  &__menu {
+
+    &__list {
+      color: black;
+      text-decoration: none;
+      font-size: 12px;
+      margin-right: 16px;
+    }
+  }
+
+  &__logo {
+    margin: 40px auto 0;
+  }
+
+  &__copyright {
+    font-size: 13px;
+    margin: 8px 0 0;
+  }
+}
+
+.footerMargin {
+  background-color: #eeeeee;
+  height: 180px;
+  width: 100%;
 }
