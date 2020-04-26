@@ -7,16 +7,16 @@ ja:
         password_confirmation: 確認用パスワード
         remember_me: 次回から自動的にログイン
         nickname: ニックネーム
-        name_first: 苗字
-        name_last: 名前
-        name_first_kana: 苗字カナ
-        name_last_kana: 名前カナ
+        name_first: 名
+        name_last: 姓
+        name_first_kana: 名カナ
+        name_last_kana: 姓カナ
         birth: 生年月日
       shipping_address:
-        name_first: 苗字
-        name_last: 名前
-        name_first_kana: 苗字カナ
-        name_last_kana: 名前カナ
+        name_first: 名
+        name_last: 姓
+        name_first_kana: 名カナ
+        name_last_kana: 姓カナ
         zipcode: 郵便番号
         prefecture_id: 都道府県
         city: 市区町村

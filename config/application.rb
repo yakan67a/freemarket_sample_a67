@@ -21,5 +21,23 @@ module FreemarketSampleA67
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.i18n.default_locale = :ja
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      if instance.kind_of?(ActionView::Helpers::Tags::Label)
+        html_tag.html_safe
+      else
+        method_name = instance.instance_variable_get(:@method_name)
+        errors = instance.object.errors[method_name]
+
+        html = <<~EOM
+          <div class=error>#{html_tag}
+            <div class="has_error" id="#{method_name}_error">
+              #{I18n.t("activerecord.attributes.#{instance.object.class.name.underscore}.#{method_name}")}
+              #{errors.first}
+            </div>
+          </div>
+        EOM
+        html.html_safe
+      end
+    end
   end
 end

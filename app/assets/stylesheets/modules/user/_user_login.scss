@@ -20,7 +20,8 @@
     @include user_input_box;
     &__loginbox {
       &__title {
-        font-size: 14px;
+        padding: 10px;
+        font-size: 16px;
       }
       &__form {
         padding: 10px 0;

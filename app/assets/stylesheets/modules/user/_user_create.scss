@@ -4,8 +4,9 @@
     @include user_title;
   }
   &__body {
+    @include user_form_box;
     &__formbox {
-      @include user_form_box;
+      padding: 20px 0;
       &__title {
         text-align: left;
         padding-bottom: 4px;
@@ -25,19 +26,29 @@
         margin-bottom: 10px;
         @include form_box;
         select {
-          width: 80px;
+          width: 86px;
           height: 50px;
-        }
-        &__harfword {
-          padding-right: 20px;
-          input {
-            width: 140px;
-          }
         }
         input[type="number"]::-webkit-outer-spin-button,
         input[type="number"]::-webkit-inner-spin-button {
           -webkit-appearance: none;
           margin: 0;
+        }
+      }
+      &__harfform {
+        display: inline-flex;
+        line-height: 50px;
+        margin-bottom: 10px;
+        position: relative;
+        &__harfword {
+          width: 150px;
+          padding-right: 20px;
+          input {
+            width: 140px;
+            height: 50px;
+            border-radius: 5px;
+            border: 1px solid #bbbbbb;
+          }
         }
       }
       &__next--button {
@@ -46,6 +57,9 @@
           color: white;
           cursor: pointer;
         }
+      }
+      &__personaltitle {
+        font-size: 18px;
       }
     }
   }

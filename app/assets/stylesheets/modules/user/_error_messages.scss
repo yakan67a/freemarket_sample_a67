@@ -1,0 +1,21 @@
+#shipping_address_prefecture_id {
+  display: flex;
+}
+.error {
+  input, select {
+    border-color: #FF0000;
+  }
+}
+.has_error {
+  color: #FF0000;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: left;
+  white-space: nowrap
+}
+
+#name_first_kana_error, #name_first_error {
+  position: absolute;
+  left: 0;
+  top: 70px;
+}
