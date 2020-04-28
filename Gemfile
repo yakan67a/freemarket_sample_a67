@@ -90,7 +90,6 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem 'enum_help'
 gem 'font-awesome-sass', '~> 5.4.1'
-gem 'ancestry'
 
 # ページネーション不要なら切る
 gem 'kaminari'
