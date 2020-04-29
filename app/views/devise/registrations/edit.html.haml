@@ -1,36 +1,38 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-    - if @minimum_password_length
-      %br/
-      %em
-        = @minimum_password_length
-        characters minimum
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+= render 'homes/headerMain'
+.mainbox
+  .mypage
+    = render "users/mypage_sidebar"
+    .mypage__main
+      .mypage__main__top
+        .userCreate__userinfo__title
+          メール・パスワード変更
+        .userCreate__userinfo__body
+          = form_for(@user, url: registration_path(resource_name)) do |f|
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__title
+                = f.label :email, "メール"
+              .userCreate__userinfo__body__formbox__form
+                = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__title
+                = f.label :current_password, "現在のパスワード"
+              .userCreate__userinfo__body__formbox__form
+                = f.password_field :current_password, placeholder: '7文字以上の半角英数字', autocomplete: "off"
+              %br
+              .userCreate__userinfo__body__formbox__title
+                = f.label :password, "新しいパスワード"
+              .userCreate__userinfo__body__formbox__form
+                = f.password_field :password, placeholder: '7文字以上の半角英数字', autocomplete: "off"
+
+              .userCreate__userinfo__body__formbox__title
+                = f.label :password_confirmation, "新しいパスワード再入力"
+              .userCreate__userinfo__body__formbox__form
+                = f.password_field :password_confirmation, placeholder: '7文字以上の半角英数字', autocomplete: "off"
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__next--button
+                = f.submit "変更する"
+
+= render 'homes/footerMain'

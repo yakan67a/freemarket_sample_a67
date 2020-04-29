@@ -32,7 +32,7 @@
     %h4.mypage__sidebar__box__title 設定
     %ul.mypage__sidebar__box__list
       %li.mypage__sidebar__box__list__item#profile
-        = link_to "#" do
+        = link_to "" do
           プロフィール
           = icon('fa', 'chevron-right')
       %li.mypage__sidebar__box__list__item#shipping
@@ -40,7 +40,7 @@
           送付先変更
           = icon('fa', 'chevron-right')
       %li.mypage__sidebar__box__list__item#MailPassword
-        = link_to "#" do
+        = link_to edit_user_registration_path do
           メール・パスワード変更
           = icon('fa', 'chevron-right')
       %li.mypage__sidebar__box__list__item#creditcard
