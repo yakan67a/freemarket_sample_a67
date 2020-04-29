@@ -4,6 +4,8 @@
     = render "users/mypage_sidebar"
     .mypage__main
       .mypage__main__top
+        - flash.each do |key, value|
+          = content_tag :div, value, class: key
         .userCreate__userinfo__title
           メール・パスワード変更
         .userCreate__userinfo__body
