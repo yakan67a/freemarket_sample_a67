@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   root to: "homes#index"
-
+  resources :items
   resources :users, only: [:index, :show] do
     collection do
       get 'logout'
