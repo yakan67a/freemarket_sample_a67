@@ -106,4 +106,4 @@
           .form__sell__profit--result
             %p.result__profit
         =f.submit '出品する', class: 'submit-btn'
-        =f.button '戻る', class: 'exit-btn'
+        =f.button '戻る',type: "button" ,class: 'exit-btn', onClick: "history.back()"
