@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     collection do
       get 'logout'
     end
+    member do
+      get 'edit_profile'
+      patch 'update_profile'
+    end
   end
 
 end

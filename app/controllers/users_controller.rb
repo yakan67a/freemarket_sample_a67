@@ -12,4 +12,13 @@ class UsersController < ApplicationController
   def logout
   end
 
+  # プロフィール編集用
+  def edit_profile
+    @user = User.find(params[:id])
+  end
+
+  # プロフィール更新用
+  def update_profile
+  end
+
 end
