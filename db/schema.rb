@@ -26,15 +26,6 @@ ActiveRecord::Schema.define(version: 2020_04_29_053829) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
-  create_table "histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "item_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_histories_on_item_id"
-    t.index ["user_id"], name: "index_histories_on_user_id"
-  end
-
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.text "image_URL", null: false
@@ -101,8 +92,6 @@ ActiveRecord::Schema.define(version: 2020_04_29_053829) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "histories", "items"
-  add_foreign_key "histories", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "shipping_addresses", "users"
 end
