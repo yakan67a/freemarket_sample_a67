@@ -7,4 +7,5 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :user
   belongs_to :rating, dependent: :destroy
+  has_one    :history
 end

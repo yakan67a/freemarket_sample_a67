@@ -29,6 +29,7 @@
 - belongs_to :sns_credential dependent: :destroy
 - has_one :credit_card dependent: :destroy
 - has_one :shipping_address dependent: :destroy
+- has_many :histories
 
 
 ## items_table
@@ -57,6 +58,7 @@
 - belongs_to :prefectures
 - belongs_to :user
 - belongs_to :rating dependent: :destroy
+- has_one :history
 
 
 ## shipping_address_table
@@ -163,3 +165,13 @@
 ### Association
 - has_many : items
 - has_ancestry
+
+## histories_table
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|foreign_key:true, null:false|
+|item_id|integer|foreign_key:true, null:false|
+
+### Association
+- belongs_to :item
+- belongs_to :user
