@@ -2,6 +2,9 @@
 .mainbox
   .mypage
     = render "users/mypage_sidebar"
-    = render "cards/card_info"
+    - if @card.present? && @card.card_id.present?
+      = render "cards/card_info"
+    - else
+      = render "cards/register_card"
 = render 'homes/footerMain'
 = render 'homes/sellBtn'
