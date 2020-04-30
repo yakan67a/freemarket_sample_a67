@@ -169,6 +169,7 @@
 ## histories_table
 |Column|Type|Options|
 |------|----|-------|
+|ID|integer|null:false|
 |user_id|integer|foreign_key:true, null:false|
 |item_id|integer|foreign_key:true, null:false|
 
