@@ -7,4 +7,7 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :brand, optional: true
   belongs_to :user  
+  belongs_to :rating, dependent: :destroy
+  has_one    :history
+
 end
