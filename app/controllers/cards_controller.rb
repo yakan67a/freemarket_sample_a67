@@ -38,8 +38,14 @@ class CardsController < ApplicationController
         else
           redirect_to action: :new
         end
+
       else
-      # ユーザーがcardテーブルを持っている場合の処理
+        # ユーザーがcardテーブルを持っている場合の処理
+        card = current_user.card
+        customer = Payjp::Customer.retrieve(card.customer_id)
+        response = customer.cards.create(card: token) # notyet:エラーハンドリング
+        card.update(card_id: response.id)
+        redirect_to action: :index
       end
     end
   end
@@ -47,7 +53,7 @@ class CardsController < ApplicationController
   def destroy 
     card = current_user.card
     customer = Payjp::Customer.retrieve(card.customer_id)
-    customer.cards.retrieve(card.card_id).delete
+    customer.cards.retrieve(card.card_id).delete # notyet:エラーハンドリング
     
     # レコード丸ごと削除するのではなく、card_idカラムをnullにします。顧客IDを保持させ続けるためです。
     card.update(card_id: nil)
