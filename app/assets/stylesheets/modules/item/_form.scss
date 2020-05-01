@@ -153,6 +153,7 @@
         }
       }
       &--children{
+        
         @include borderStyle;
         height: 48px;
         margin-top: 16px;
