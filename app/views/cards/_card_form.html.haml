@@ -3,6 +3,9 @@
   %label カード番号
   = f.text_field :number, {class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"}
 
+  -# エラーメッセージ表示用
+  .get-token-error
+
   != sprintf(f.date_select(:expiration_date, 
                            with_css_classes:'XXXXX', 
                            order: [:month,:year,:day], 
