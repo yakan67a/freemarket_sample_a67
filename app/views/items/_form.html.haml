@@ -42,7 +42,7 @@
             %span
               必須
           .form__details__category--column
-            = f.select :category_id, [["選択してください", ""], ["レディース", 1], ["メンズ", 2]]
+            = f.collection_select :category_id , @category_parent_array, :id , :name, {include_blank: "---"}, {id:'list__category__parent'} 
         .form__details__brand
           .form__details__brand--title
             =f.label :brand_id, "ブランド名" 
