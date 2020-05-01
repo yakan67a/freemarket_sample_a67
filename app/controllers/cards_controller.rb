@@ -4,6 +4,11 @@ class CardsController < ApplicationController
 
   def index
     @card = current_user.card
+
+    if @card.present? && @card.card_id.present?
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_info = customer.cards.retrieve(@card.card_id)
+    end
   end
 
   def new
