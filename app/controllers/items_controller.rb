@@ -15,6 +15,7 @@ def create
   end
 end
 
+
 def get_category_children
   @category_children = Category.find(params[:parent_id]).children
 end

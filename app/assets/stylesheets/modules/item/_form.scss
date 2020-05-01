@@ -157,20 +157,21 @@
         height: 48px;
         margin-top: 16px;
         #list__category__children{
+
           @include selectStyle;
           width: 100%;
-        }
+        
       }
       &--grandchildren{
         @include borderStyle;
         height: 48px;
         margin-top: 16px;
         #list__category__grandchildren{
-          @include selectStyle;
+            @include selectStyle;
+
           width: 100%;
         }
       }
-    }
     &__brand{
           margin-top: 32px;
       &--title{
@@ -215,6 +216,8 @@
         }
       }
     }
+  }
+}
   }
     &__ship{
           @include bottomColor;
@@ -363,4 +366,5 @@
         left: 180px;
       }
     }
+  
 }

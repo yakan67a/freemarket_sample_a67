@@ -1,3 +1,4 @@
+
 $(function(){
 
   function buildHTML(data) {
@@ -31,7 +32,9 @@ $(function(){
         $(".form__details__category").append(insertHTML);
       })
       .fail(function(){
-        alert('やり直してください');
+
+        alert('エラーが出ました');
+
       })
     }
   });
@@ -58,7 +61,9 @@ $(function(){
         $('.form__details__category').append(InsertHTML);
       })
       .fail(function(){
-        alert("やり直してください");
+
+        alert("エラーがでました");
+
       })
     }
   });
