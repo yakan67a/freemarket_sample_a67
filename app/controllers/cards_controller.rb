@@ -44,7 +44,14 @@ class CardsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy 
+    card = current_user.card
+    customer = Payjp::Customer.retrieve(card.customer_id)
+    customer.cards.retrieve(card.card_id).delete
+    
+    # レコード丸ごと削除するのではなく、card_idカラムをnullにします。顧客IDを保持させ続けるためです。
+    card.update(card_id: nil)
+    redirect_to action: :index
   end
   
   private
