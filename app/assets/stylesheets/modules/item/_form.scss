@@ -146,23 +146,21 @@
       &--column{
         @include borderStyle;
         height: 48px;
-        width: 100%;
         margin-top: 16px;
-
         #list__category__parent{
           @include selectStyle;
           width: 100%;
         }
       }
       &--children{
-        
         @include borderStyle;
         height: 48px;
         margin-top: 16px;
         #list__category__children{
+
           @include selectStyle;
           width: 100%;
-        }
+        
       }
       &--grandchildren{
         @include borderStyle;
@@ -170,6 +168,7 @@
         margin-top: 16px;
         #list__category__grandchildren{
             @include selectStyle;
+
           width: 100%;
         }
       }
@@ -218,6 +217,7 @@
       }
     }
   }
+}
   }
     &__ship{
           @include bottomColor;

@@ -32,7 +32,9 @@ $(function(){
         $(".form__details__category").append(insertHTML);
       })
       .fail(function(){
+
         alert('エラーが出ました');
+
       })
     }
   });
@@ -59,7 +61,9 @@ $(function(){
         $('.form__details__category').append(InsertHTML);
       })
       .fail(function(){
+
         alert("エラーがでました");
+
       })
     }
   });
