@@ -10,11 +10,8 @@ Rails.application.routes.draw do
   root to: "homes#index"
   resources :items
   resources :users, only: [:index, :show] do
-    collection do
-      get 'logout'
-    end
     member do
-      get 'edit_profile'
+      get 'logout', 'edit_profile'
       patch 'update_profile'
     end
   end

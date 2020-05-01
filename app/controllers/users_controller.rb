@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   # マイページメイン画面用
   def show
+    @user = User.find(params[:id])
   end
 
   # マイページからのログアウト用
