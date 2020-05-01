@@ -19,6 +19,18 @@ class UsersController < ApplicationController
 
   # プロフィール更新用
   def update_profile
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to edit_profile_user_path, notice: '更新しました'
+    else
+      flash.now[:error] = '更新失敗'
+      render edit_profile_user_path
+    end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:nickname, :profile_image, :profile)
   end
 
 end

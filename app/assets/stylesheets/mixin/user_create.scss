@@ -8,14 +8,14 @@
   width: 700px;
   background-color: white;
   margin: 0 auto;
-  padding: 30px 0;
 }
 
 @mixin user_title {
-  padding: 0 0 30px 0;
+  padding: 30px 0;
   border-bottom: 1px solid #eeeeee;
   font-size: 22px;
   font-weight: bold;
+  text-align: center;
 }
 
 @mixin user_button {

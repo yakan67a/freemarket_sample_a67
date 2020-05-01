@@ -1,1 +1,38 @@
-test
+-# いったん仮のビュー
+= render 'homes/headerMain'
+.mainbox
+  .mypage
+    = render "users/mypage_sidebar"
+    .mypage__main
+      .mypage__main__top
+        - flash.each do |key, value|
+          = content_tag :div, value, class: key
+
+        .userCreate__userinfo__title
+          会員情報入力
+        .userCreate__userinfo__body
+          = form_for(@user, url: update_profile_user_path) do |f|
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__title
+                = f.label :profile_image, "画像"
+              .userCreate__userinfo__body__formbox__form
+                = f.file_field :profile_image, placeholder: '例）ふりまり子'
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__title
+                = f.label :nickname, "ニックネーム"
+              .userCreate__userinfo__body__formbox__form
+                = f.text_field :nickname, placeholder: '例）ふりまり子'
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__title
+                = f.label :profile, "プロフィール"
+              .userCreate__userinfo__body__formbox__form
+                = f.text_area :profile, size: '30*50', placeholder: '例）こんにちは'
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__next--button
+                = f.submit "次へ進む"
+
+= render 'homes/footerMain'
