@@ -16,8 +16,10 @@ class CardsController < ApplicationController
 
   def create
     token = params["payjp-token"]
-    if token.blank? # トークンの取得に失敗していたら戻る
-      redirect_to action: :new
+
+    if token.blank? # トークンの取得に失敗していたらやりなおしを求める
+      @error_message = "カードの登録に失敗しました。もう一度お試しください。"
+      render :new
     else
       if current_user.card.blank?
         # ユーザーがcardテーブルを持っていない場合の処理
@@ -36,16 +38,22 @@ class CardsController < ApplicationController
         if card.save
           redirect_to action: :index
         else
-          redirect_to action: :new
+          @error_message = "カードの登録に失敗しました。もう一度お試しください。"
+          render :new
         end
 
       else
         # ユーザーがcardテーブルを持っている場合の処理
         card = current_user.card
         customer = Payjp::Customer.retrieve(card.customer_id)
-        response = customer.cards.create(card: token) # notyet:エラーハンドリング
-        card.update(card_id: response.id)
-        redirect_to action: :index
+        response = customer.cards.create(card: token, default: true)
+
+        if card.update(card_id: response.id)
+          redirect_to action: :index
+        else
+          @error_message = "カードの登録に失敗しました。もう一度お試しください。"
+          render :new
+        end
       end
     end
   end
@@ -53,9 +61,9 @@ class CardsController < ApplicationController
   def destroy 
     card = current_user.card
     customer = Payjp::Customer.retrieve(card.customer_id)
-    customer.cards.retrieve(card.card_id).delete # notyet:エラーハンドリング
+    customer.cards.retrieve(card.card_id).delete
     
-    # レコード丸ごと削除するのではなく、card_idカラムをnullにします。顧客IDを保持させ続けるためです。
+    # レコード丸ごと削除するのではなく、card_idカラムをnullにします。ユーザーに顧客IDを保持させ続けるためです。
     card.update(card_id: nil)
     redirect_to action: :index
   end

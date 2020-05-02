@@ -1,10 +1,11 @@
 = form_with url: "/users/#{current_user.id}/cards", method: :post, id: "charge-form", name: "inputForm", local: true do |f|
 
+  .get-token-error
+    = @error_message if @error_message.present?
+
   %label カード番号
   = f.text_field :number, {class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"}
 
-  -# エラーメッセージ表示用
-  .get-token-error
 
   != sprintf(f.date_select(:expiration_date, 
                            with_css_classes:'XXXXX', 
