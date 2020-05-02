@@ -88,7 +88,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |ID|integer| null:false|
-|user_id|integer|foreign_key:true|
+|user_id|integer|foreign_key:true, null:false|
 |customer_id|string|null:false|
 |card_id|string|
 
