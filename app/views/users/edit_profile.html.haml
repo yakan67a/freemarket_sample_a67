@@ -5,9 +5,6 @@
     = render "users/mypage_sidebar"
     .mypage__main
       .mypage__main__top
-        - flash.each do |key, value|
-          = content_tag :div, value, class: key
-
         .userCreate__userinfo__title
           会員情報入力
         .userCreate__userinfo__body
@@ -33,6 +30,6 @@
 
             .userCreate__userinfo__body__formbox
               .userCreate__userinfo__body__formbox__next--button
-                = f.submit "次へ進む"
+                = f.submit "更新"
 
 = render 'homes/footerMain'

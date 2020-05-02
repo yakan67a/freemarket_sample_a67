@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :items
   resources :users, only: [:index, :show] do
     member do
-      get 'logout', 'edit_profile'
+      get 'logout', 'edit_profile', 'update_complete'
       patch 'update_profile'
     end
   end
