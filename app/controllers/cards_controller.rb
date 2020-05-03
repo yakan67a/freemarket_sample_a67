@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   require 'payjp'
+  before_action :move_to_login
   before_action :set_payjp_key, only: [:index, :create, :destroy]
 
   def index
@@ -69,6 +70,10 @@ class CardsController < ApplicationController
   end
   
   private
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
+  end
+
   def set_payjp_key # payjpの秘密鍵をセットする
     Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
   end
