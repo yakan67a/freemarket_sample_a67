@@ -15,7 +15,8 @@ $(function() {
     Payjp.createToken(card, function(s, response) {
       if (response.error) {
         // 挙動確認用の仮コード:エラー時にどんなエラーだったのかを表示
-        $('.get-token-error').text("カードの情報が正しくありません。");
+        $('.card-form__mainForm--error').text("カードの情報が正しくありません。");
+        $('.card-form__mainForm--error').css("padding-bottom", "40px")
         $('#token_submit').prop('disabled', false);
       } else {
         // 現状のフォームの情報を全て消した上でトークンだけサーバに飛ばす

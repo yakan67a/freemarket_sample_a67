@@ -1,0 +1,108 @@
+.card-form {
+  @include singleBoxBody;
+
+  &__header {
+    @include singleBoxHeader;
+  }
+
+  &__headerTitle {
+    @include singleBoxHeaderText;
+  }
+
+  &__main {
+    padding: 40px 40px 64px;
+  }
+
+  &__mainForm {
+    @include user_form_box;
+
+    &--error {
+      color: red;
+    }
+
+    &--serverError {
+      color: red;
+      padding-bottom: 40px;
+    }
+
+    span {
+      @include requireLabel;
+    }
+
+    &--submit {
+      @include user_button;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
+  }
+
+  &__mainFormNumber {
+    padding-bottom: 20px;
+
+    &--text {
+    padding-bottom: 4px;
+    }
+
+    &--field {
+      line-height: 50px;
+      margin-bottom: 10px;
+      @include form_box;
+    }
+
+    &--logo {
+      .card-logo {
+        padding-right: 5px;
+      }
+    }
+  }
+
+  &__mainFormDate {
+    padding-bottom: 20px;
+
+    &--text {
+      padding-bottom: 4px;
+    }
+
+    &--field {
+      line-height: 50px;
+      margin-bottom: 10px;
+      @include form_box;
+      
+      select {
+        width: 110px;
+        height: 50px;
+        background-color: white;
+      }
+
+      #_expiration_date_2i {
+        margin-right: 9px;
+      }
+
+      #_expiration_date_1i {
+        margin-left: 12px;
+        margin-right: 9px;
+      }
+
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
+  &__mainFormCvc {
+    padding-bottom: 20px;
+
+    &--text {
+      padding-bottom: 4px;
+    }
+
+    &--field {
+      line-height: 50px;
+      margin-bottom: 10px;
+      @include form_box;
+    }
+  }
+}
