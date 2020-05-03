@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     collection do
       get 'logout'
     end
+    resources :cards, except: [:show, :edit, :update]
   end
 
 end

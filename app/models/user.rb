@@ -10,4 +10,5 @@ class User < ApplicationRecord
   validates :name_first_kana, :name_last_kana, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: "全角カタカナで入力してください" }
   has_one :shipping_address, dependent: :destroy
   has_many :histories
+  has_one :card, dependent: :destroy
 end

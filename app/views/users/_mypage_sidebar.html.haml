@@ -44,7 +44,7 @@
           メール・パスワード変更
           = icon('fa', 'chevron-right')
       %li.mypage__sidebar__box__list__item#creditcard
-        = link_to "#" do
+        = link_to user_cards_path(current_user.id) do
           お支払い方法設定
           = icon('fa', 'chevron-right')
       %li.mypage__sidebar__box__list__item#logout
