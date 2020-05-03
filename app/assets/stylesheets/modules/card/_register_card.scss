@@ -1,0 +1,38 @@
+.register-card {
+  @include singleBoxBody;
+  margin-bottom: 200px;
+
+  &__header {
+    @include singleBoxHeader;
+  }
+
+  &__headerTitle {
+    @include singleBoxHeaderText;
+  }
+
+  &__main {
+    margin: 60px;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  &__mainTitle {
+    max-width: 300px;
+    margin: 0 auto;
+    font-weight: bold;
+  }
+
+  &__mainButton {
+    @include user_button;
+    text-align: center;
+  }
+
+  &__mainButtonText {
+    color: white;
+    line-height: 50px;
+
+    &--icon {
+      margin-right: 10px;
+    }
+  }
+
+}
