@@ -1,0 +1,54 @@
+.editProfile {
+  background-color: white;
+  text-align: center;
+  &__title {
+    @include user_title;
+  }
+  &__main {
+    background-color: #cccccc;
+    padding: 20px 0;
+    &--img {
+      margin: 0 auto;
+      border: 2px solid #bbbbbb;
+      border-radius: 5px;
+      width: 100px;
+      height: 100px;
+      background-color: #ffffff;
+      i {
+        padding: 10px;
+        font-size: 80px;
+        cursor: pointer;
+      }
+    }
+    &__nickname {
+      margin: 20px auto;
+      font-size: 18px;
+    }
+  }
+  &__message {
+    padding: 20px 40px;
+    &__title {
+      text-align: left;
+      padding-bottom: 4px;
+    }
+    &__sentence {
+      textarea {
+        resize: vertical;
+        width: 100%;
+      }
+    }
+  }
+  &__update {
+    &--button {
+      input {
+          @include user_button;
+          color: white;
+          cursor: pointer;
+        }
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
