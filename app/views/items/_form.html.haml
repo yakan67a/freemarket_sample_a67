@@ -7,7 +7,7 @@
         %span.careful
           必須
         %p
-          最大10枚までアップロードできます
+          最大５枚までアップロードできます
         .post__drop__box__container
           .preview-content
           .label-content
@@ -16,7 +16,7 @@
               .input-area
                 =f.fields_for :item_images do |image|
                   .input-area-form{data: {index: image.index}}
-                    =image.file_field :image_URL ,class: "js-file",value: ""
+                    =image.file_field :image_URL ,class: "js-file ",value: ""
 
       .form__items
         .form__items__name
@@ -25,14 +25,14 @@
             %span
               必須
           .form__items__name--column
-            = f.text_field :items_name, placeholder: "40文字まで"
+            = f.text_field :items_name, placeholder: "40文字まで",class: "validate required"
         .form__items__description
           .form__items__description--title
             =f.label :item_description, "商品の説明"
             %span 
               必須
           .form__items__description--column
-            = f.text_area :item_description, placeholder: "商品の説明"
+            = f.text_area :item_description, placeholder: "商品の説明", class: "validate sentence"
       .form__details
         .form__details__category
           .form__details__category--title
@@ -42,7 +42,7 @@
             %span
               必須
           .form__details__category--column
-            = f.collection_select :category_id , @category_parent_array, :id , :name, {include_blank: "---"}, {id:'list__category__parent'} 
+            = f.collection_select :category_id , @category_parent_array, :id , :name, {include_blank: "---"}, {id:'list__category__parent'}
         .form__details__brand
           .form__details__brand--title
             =f.label :brand_id, "ブランド名" 
@@ -56,7 +56,7 @@
             %span
               必須
           .form__details__condition--column
-            = f.select :condition, [["選択してください",""],["新品・未使用","新品・未使用"],["未使用に近い","未使用に近い"],["目立った傷や汚れ無し","目立った傷や汚れ無し"],["やや傷や汚れあり","やや傷や汚れあり"],["傷や汚れあり","傷や汚れあり"],["全体的に状態が悪い","全体的に状態が悪い"]]
+            = f.select :condition, [["選択してください",""],["新品・未使用","新品・未使用"],["未使用に近い","未使用に近い"],["目立った傷や汚れ無し","目立った傷や汚れ無し"],["やや傷や汚れあり","やや傷や汚れあり"],["傷や汚れあり","傷や汚れあり"],["全体的に状態が悪い","全体的に状態が悪い"]],{},{class: "validate condition"}
       .form__ship
         .form__ship__cost
           .form__ship__cost--title
@@ -66,21 +66,21 @@
             %span
               必須
           .form__ship__cost--column
-            = f.select :shipping_costs, [["選択してください",""],["送料込み(出品者負担)","送料込み(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]]
+            = f.select :shipping_costs, [["選択してください",""],["送料込み(出品者負担)","送料込み(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]],{},{class: "validate cost"}
         .form__ship__area
           .form__ship__area--title
             =f.label :shipping_area_id, "発送元の地域"
             %span
               必須
           .form__ship__area--column
-            = f.collection_select :shipping_area_id, Prefecture.all, :id, :name
+            = f.collection_select :shipping_area_id, Prefecture.all, :id, :name,{include_blank: "---"},{class:"validate prefecture"}
         .form__ship__days 
           .form__ship__days--title
             =f.label :days_to_ship, "発送までの日数"
             %span
               必須
           .form__ship__days--column
-            = f.select :days_to_ship, [["選択してください",""],["1~2日で発送","1~2日で発送"],["3~4日で発送","3~4日で発送"],["5~6日で発送","5~6日で発送"]]
+            = f.select :days_to_ship, [["選択してください",""],["1~2日で発送","1~2日で発送"],["3~4日で発送","3~4日で発送"],["5~6日で発送","5~6日で発送"]],{},{class: "validate days"}
       .form__sell
         .form__sell__price 
           .form__sell__price--title 
@@ -90,6 +90,8 @@
             %span
               必須
           .form__sell__price--column 
+            %p.suggest
+              *半角数字入力
             %span
               ¥
             = f.number_field :price, placeholder: "0", id: "price__calc"

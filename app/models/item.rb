@@ -8,7 +8,11 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :brand, optional: true
   belongs_to :user  
-  belongs_to :rating, dependent: :destroy
+  has_one    :rating, dependent: :destroy
   has_one    :history
+
+  validates :items_name, :item_description, :condition, :shipping_costs, :days_to_ship, :price, :category_id, :shipping_area_id, presence: true
+  validates :items_name, length: {maximum: 40}
+  validates :price, inclusion: { in: 300..9999999 }
 
 end
