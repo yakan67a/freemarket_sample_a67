@@ -16,7 +16,7 @@
                     - if @user.profile_image.present?
                       = image_tag @user.profile_image.url, class: 'profile_image', size: "100x100"
                     - else
-                      = icon('far', 'smile-beam')
+                      = image_tag ('material/icon/mypage_sample.png'), class: 'profile_image', size: "100x100"
                     = f.file_field :profile_image, class: 'hidden'
               .editProfile__main__nickname
                 = f.text_field :nickname
