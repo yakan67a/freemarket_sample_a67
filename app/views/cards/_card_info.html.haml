@@ -1,10 +1,17 @@
-カード会社
-= @card_info.brand
-%br
-カード番号
-= "**** **** **** #{@card_info.last4}"
-%br
-有効期限
-= "#{@card_info.exp_month.to_s} / #{@card_info.exp_year.to_s.slice(2,3)}"
-%br
-= link_to "削除する", user_card_path(user_id: current_user.id, id: @card.id), method: :delete
+.card-info
+  .card-info__header
+    .card-info__headerTitle
+      支払い方法
+  .card-info__main
+    .card-info__mainTitle
+      登録中のクレジットカード
+    .card-info__mainContent
+      .card-info__mainContentLeft
+        .card-info__mainContentLeft--logo
+          = render "card_logo"
+        .card-info__mainContentLeft--number
+          = "**** **** **** #{@card_info.last4}"
+        .card-info__mainContentLeft--expDate
+          = "#{@card_info.exp_month.to_s} / #{@card_info.exp_year.to_s.slice(2,3)}"
+      .card-info__mainContentRight
+        = link_to "削除する", user_card_path(user_id: current_user.id, id: @card.id), method: :delete, class: "card-info__mainContentRight--delete"
