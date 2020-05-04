@@ -7,17 +7,26 @@
   &__main {
     background-color: #cccccc;
     padding: 20px 0;
-    &--img {
-      margin: 0 auto;
-      border: 2px solid #bbbbbb;
-      border-radius: 5px;
-      width: 100px;
-      height: 100px;
-      background-color: #ffffff;
-      i {
-        padding: 10px;
-        font-size: 80px;
-        cursor: pointer;
+    &__imgbox {
+      .file_error {
+        color: #FF0000;
+        font-size: 12px;
+        line-height: 24px;
+        white-space: nowrap
+      }
+      text-align: center;
+      &--img {
+        margin: 0 auto;
+        border: 2px solid #bbbbbb;
+        border-radius: 5px;
+        width: 100px;
+        height: 100px;
+        background-color: #ffffff;
+        i {
+          padding: 10px;
+          font-size: 80px;
+          cursor: pointer;
+        }
       }
     }
     &__nickname {

@@ -1,4 +1,3 @@
--# いったん仮のビュー
 = render 'homes/headerMain'
 .mainbox
   .mypage
@@ -11,13 +10,14 @@
             .editProfile__title
               プロフィール
             .editProfile__main
-              .editProfile__main--img
-                =f.label :profile_image do
-                  - if @user.profile_image.present?
-                    = image_tag @user.profile_image.url
-                  - else
-                    = icon('far', 'smile-beam')
-                  = f.file_field :profile_image, class: 'hidden'
+              .editProfile__main__imgbox
+                .editProfile__main__imgbox--img
+                  =f.label :profile_image do
+                    - if @user.profile_image.present?
+                      = image_tag @user.profile_image.url, class: 'profile_image', size: "100x100"
+                    - else
+                      = icon('far', 'smile-beam')
+                    = f.file_field :profile_image, class: 'hidden'
               .editProfile__main__nickname
                 = f.text_field :nickname
 
