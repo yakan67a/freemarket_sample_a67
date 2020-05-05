@@ -1,0 +1,10 @@
+= render 'homes/headerMain'
+.mainbox
+  .mypage
+    = render "users/mypage_sidebar"
+    - if @card.present? && @card.card_id.present?
+      = render "cards/card_info"
+    - else
+      = render "cards/register_card"
+= render 'homes/footerMain'
+= render 'homes/sellBtn'

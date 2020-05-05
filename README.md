@@ -27,8 +27,9 @@
 - has_many :ratings dependent: :destroy
 - has_many :comments dependent: :destroy
 - belongs_to :sns_credential dependent: :destroy
-- has_one :credit_card dependent: :destroy
+- has_one :card dependent: :destroy
 - has_one :shipping_address dependent: :destroy
+- has_many :histories
 
 
 ## items_table
@@ -57,6 +58,7 @@
 - belongs_to :prefectures
 - belongs_to :user
 - belongs_to :rating dependent: :destroy
+- has_one :history
 
 
 ## shipping_address_table
@@ -81,13 +83,14 @@
 - belongs_to :users
 
 
-## credit_cards_table
+## cards_table
 
 |Column|Type|Options|
 |------|----|-------|
 |ID|integer| null:false|
-|user_id|integer|foreign_key:true|
-|customer_id|integer|foreign_key:true|
+|user_id|integer|foreign_key:true, null:false|
+|customer_id|string|null:false|
+|card_id|string|
 
 ### Association
 - belongs_to :user
@@ -163,3 +166,14 @@
 ### Association
 - has_many : items
 - has_ancestry
+
+## histories_table
+|Column|Type|Options|
+|------|----|-------|
+|ID|integer|null:false|
+|user_id|integer|foreign_key:true, null:false|
+|item_id|integer|foreign_key:true, null:false|
+
+### Association
+- belongs_to :item
+- belongs_to :user

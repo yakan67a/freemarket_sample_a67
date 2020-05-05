@@ -1,0 +1,50 @@
+.card-form
+  .card-form__header
+    .card-form__headerTitle
+      クレジットカード情報入力
+  .card-form__main
+    .card-form__mainForm
+      = form_with url: "/users/#{current_user.id}/cards", method: :post, id: "charge-form", name: "inputForm", local: true do |f|
+        .card-form__mainForm--error
+          - if @error_message.present?
+            .card-form__mainForm--serverError
+              = @error_message 
+
+        .card-form__mainFormNumber
+          .card-form__mainFormNumber--text
+            = f.label :number, "カード番号"
+            %span 必須
+          .card-form__mainFormNumber--field
+            = f.text_field :number, {class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"}
+          .card-form__mainFormNumber--logo
+            = image_tag "material/card_logo/visa.svg",             height: "20", width: "36", class: "card-logo"
+            = image_tag "material/card_logo/master-card.svg",      height: "20", width: "36", class: "card-logo"
+            = image_tag "material/card_logo/saison-card.svg",      height: "20", width: "36", class: "card-logo"
+            = image_tag "material/card_logo/jcb.svg",              height: "20", width: "36", class: "card-logo"
+            = image_tag "material/card_logo/american_express.svg", height: "20", width: "36", class: "card-logo"
+            = image_tag "material/card_logo/dinersclub.svg",       height: "20", width: "36", class: "card-logo"
+            = image_tag "material/card_logo/discover.svg",         height: "20", width: "36", class: "card-logo"
+        
+        .card-form__mainFormDate
+          .card-form__mainFormDate--text
+            = f.label :expiration_date, "有効期限"
+            %span 必須
+          .card-form__mainFormDate--field
+            != sprintf(f.date_select(:expiration_date, 
+                                  order: [:month,:year,:day], 
+                                  use_two_digit_numbers: true, 
+                                  discard_day: true, 
+                                  start_year: Time.now.year-2000, 
+                                  end_year: Time.now.year-2000+10, 
+                                  date_separator: '%s'),
+                    '月') + '年'
+        
+        .card-form__mainFormCvc
+          .card-form__mainFormCvc--text
+            = f.label :cvc, "セキュリティーコード"
+            %span 必須
+          .card-form__mainFormCvc--field
+            = f.text_field :cvc, {class: "cvc", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: 4, id: "cvc"}
+
+        
+        = f.submit "支払い方法の追加", id: "token_submit", class: "card-form__mainForm--submit"

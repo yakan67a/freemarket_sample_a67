@@ -1,0 +1,13 @@
+.register-card
+  .register-card__header
+    .register-card__headerTitle
+      支払い方法
+  .register-card__main
+    .register-card__mainTitle
+      クレジットカード登録
+    .register-card__mainButton
+      = link_to new_user_card_path(current_user.id) do
+        .register-card__mainButtonText
+          = icon('fas', 'credit-card', class: "register-card__mainButtonText--icon")
+          %span<>
+          クレジットカードを追加する

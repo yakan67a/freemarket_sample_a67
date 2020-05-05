@@ -1,0 +1,53 @@
+.card-info {
+  @include singleBoxBody;
+  margin-bottom: 200px;
+
+  &__header {
+    @include singleBoxHeader;
+  }
+
+  &__headerTitle {
+    @include singleBoxHeaderText;
+  }
+
+  &__main {
+    margin: 60px;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  &__mainTitle {
+    max-width: 300px;
+    margin: 0 auto;
+    font-weight: bold;
+  }
+
+  &__mainContent {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__mainContentLeft {
+
+    &--number {
+      font-size: 14px;
+    }
+
+    &--expDate {
+      font-size: 14px;
+    }
+  }
+
+  &__mainContentRight {
+
+    &--delete {
+      font-size: 14px;
+      color: red;
+      padding: 4px 6px;
+      border: 1px solid red;
+      border-radius: 3px;
+    }
+  }
+}

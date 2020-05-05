@@ -12,4 +12,6 @@ class User < ApplicationRecord
   has_one :shipping_address, dependent: :destroy
 
   mount_uploader :profile_image, MypageImageUploader
+  has_many :histories
+  has_one :card, dependent: :destroy
 end
