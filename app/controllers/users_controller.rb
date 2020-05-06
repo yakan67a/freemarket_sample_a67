@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
 
+  before_action :set_user, except: :index
+
   # 新規登録画面用
   def index
   end
 
   # マイページメイン画面用
   def show
-    @user = User.find(params[:id])
   end
 
   # マイページからのログアウト用
@@ -15,12 +16,10 @@ class UsersController < ApplicationController
 
   # プロフィール編集用
   def edit_profile
-    @user = User.find(params[:id])
   end
 
   # プロフィール更新用
   def update_profile
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to update_complete_user_path, notice: '更新しました'
     else
@@ -35,6 +34,10 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:nickname, :profile_image, :profile)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end
