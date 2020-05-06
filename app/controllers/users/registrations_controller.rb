@@ -44,7 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    edit_user_registration_path
+    update_complete_user_path(current_user.id)
   end
 
   # GET /resource/edit
