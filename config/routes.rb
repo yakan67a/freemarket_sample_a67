@@ -18,8 +18,9 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:index, :show] do
-    collection do
-      get 'logout'
+    member do
+      get 'logout', 'edit_profile', 'update_complete'
+      patch 'update_profile'
     end
     resources :cards, except: [:show, :edit, :update]
   end

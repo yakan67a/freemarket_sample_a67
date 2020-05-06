@@ -1,0 +1,15 @@
+.updateBox {
+  padding: 80px 0;
+  background-color: white;
+  text-align: center;
+  &__title {
+    @include user_button;
+    &--button {
+      color: white;
+      line-height: 50px
+    }
+  }
+  &__title:hover {
+    opacity: 0.8;
+  }
+}
