@@ -35,6 +35,6 @@ def item_params
       :category_id,
       :brand_id,
       :shipping_area_id,
-      item_images_attributes: [:image_URL]).merge(user_id: current_user.id)
+      item_images_attributes: [:image_URL,:_destroy, :id]).merge(user_id: current_user.id)
 end
 end
