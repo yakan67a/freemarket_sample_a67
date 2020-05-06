@@ -8,79 +8,79 @@
 .form{
   background-color: white;
   margin: 0 auto;
-  width: 700px;
+  width: 720px;
   .error{
     color: red;
   }
   
-  &__items__image{
-    height: auto ;
+  &__items__main{
     padding: 40px;
     border-bottom: 1px solid #eeeeee;
-    span.images{
+    font-size: 14px;
+    &__title{
       font-weight: bold;
+      span{
+        @include neededAlert;
+      }
     }
-    span.careful{
-      @include neededAlert;
-    }
-    p{
+    &__text{
       font-size: small;
       margin-top: 10px;
     }
-    .post__drop__box__container{
-      margin: 16px auto 0;
+    .flexbox{
       display: flex;
       flex-wrap: wrap;
-      .preview-content {
+      margin: 0 auto;
+      width: 660px;
+      cursor: pointer;
+      .js-file{
+        display: none;
+      }
+      
+      .new-wrapper__main__preview{
+        margin: 16px 0;
         display: flex;
         flex-wrap: wrap;
-        .preview-box {
-          height: 162px;
-          width: 112px;
-          margin-right: 10px;
-          .upper-box {
-            height: 162px;
-            width: 100%;
-            text-align: center;
-            img{
-              width: 112px;
-              height: 130px;
-            }
-            .delete-box {
-              color: #00b0ff;
-              width: 100%;
-              height: 32px;
-              line-height: 20px;
-              border: 1px solid #eee;
-              background: #f5f5f5;
-              cursor: pointer;
-            }
+        &__image{
+          position: relative;
+          &__img{
+            width: 131px;
+            margin-right: 1px;
+            height: 160px;
+            object-fit: cover;
           }
-
-
-
+          &__delete-btn{
+            text-shadow: 0 0 2px white;
+            cursor: pointer;
+            position: absolute;
+            top: 0px;
+          }
         }
       }
-      .label-content{
-        position: relative;
-        margin-bottom: 10px;
-        width: 620px;
-        .label-box{
-          display: inline-block;
-          border: 1px dashed #ccc;
-          background: #f5f5f5;
-          width: 100%;
-          height: 162px;
+      #image-wrapper{
+        .form__items__main__image--field{
           cursor: pointer;
-          .camera-btn{
+          width: 620px;
+          height: 160px;
+          margin: 16px auto;
+          background-color: #eee;
+          border: 1px dashed #ccc;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          .fa-camera{
             position: absolute;
-            left: 310px;
-            top: 70px;
+            top: 40px;
+            font-size: 20px;
           }
-          
+          &__text{
+            padding-top: 20px;
+          }
         }
       }
     }
+    
   }
   &__items{
     @include bottomColor;

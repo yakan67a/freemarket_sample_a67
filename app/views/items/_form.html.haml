@@ -1,23 +1,21 @@
 .body
   = form_for @item do |f|
     .form
-      .form__items__image
-        %span.images
-          出品画像
-        %span.careful
-          必須
-        %p
-          最大５枚までアップロードできます
-        .post__drop__box__container
-          .preview-content
-          .label-content
-            %label.label-box
-              = icon('fas','camera', class: "camera-btn")
-              .input-area
-                =f.fields_for :item_images do |image|
-                  .input-area-form{data: {index: image.index}}
-                    =image.file_field :image_URL ,class: "js-file ",value: ""
-
+      .form__items__main
+        .form__items__main__title
+          商品画像
+          %span 必須
+        .form__items__main__text 
+          最大5枚までアップロードできます
+        .flexbox
+          .new-wrapper__main__preview
+          %label{id: "image-wrapper"}
+            .form__items__main__image--field
+              %i{class: "fas fa-camera"}
+              .form__items__main__image--field__text
+                クリックして選択
+            =f.fields_for :item_images do |image|
+              =image.file_field :image_URL ,class: "js-file"
       .form__items
         .form__items__name
           .form__items__name--title
