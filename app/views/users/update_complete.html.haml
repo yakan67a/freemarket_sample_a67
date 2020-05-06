@@ -1,0 +1,15 @@
+-# ユーザ情報更新後の完了画面
+= render 'homes/headerMain'
+.mainbox
+  .mypage
+    = render "users/mypage_sidebar"
+    .mypage__main
+      .updateBox
+        - flash.each do |key, value|
+          = content_tag :div, value, class: key
+        .updateBox__title
+          = link_to "/users/#{current_user.id}" do
+            .updateBox__title--button
+              マイページトップへ
+= render 'homes/footerMain'
+= render 'homes/sellBtn'
