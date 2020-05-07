@@ -1,0 +1,80 @@
+-# マイページ 送付先住所編集画面
+= render 'homes/headerMain'
+
+.mainbox
+  .mypage
+    = render "users/mypage_sidebar"
+    .mypage__main
+      .mypage__main__top
+        .userCreate__userinfo__title
+          送付先住所変更
+        .userCreate__userinfo__body
+          = form_for(@shipping_address, url: update_shipping_address_user_path) do |f|
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__title
+                = f.label :name, "送付先氏名(全角)"
+                %span 必須
+              .userCreate__userinfo__body__formbox__harfform
+                .userCreate__userinfo__body__formbox__harfform__harfword
+                  = f.text_field :name_last, placeholder: '例）田中'
+                .userCreate__userinfo__body__formbox__harfform__harfword
+                  = f.text_field :name_first, placeholder: '例）太郎'
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__title
+                = f.label :name_kana, "フリガナ(全角カナ)"
+                %span 必須
+              .userCreate__userinfo__body__formbox__harfform
+                .userCreate__userinfo__body__formbox__harfform__harfword
+                  = f.text_field :name_last_kana, placeholder: '例）タナカ'
+                .userCreate__userinfo__body__formbox__harfform__harfword
+                  = f.text_field :name_first_kana, placeholder: '例）タロウ'
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__title
+                = f.label :zipcode, "〒郵便番号（ハイフンなし）"
+                %span 必須
+              .userCreate__userinfo__body__formbox__form
+                = f.number_field :zipcode, placeholder: '例）1234567', pattern: "\d{7}"
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__title
+                = f.label :prefecture_id, "都道府県"
+                %span 必須
+              .userCreate__userinfo__body__formbox__form
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---"
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__title
+                = f.label :city, "市区町村"
+                %span 必須
+              .userCreate__userinfo__body__formbox__form
+                = f.text_field :city, placeholder: '例）横浜市葵区'
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__title
+                = f.label :street_address, "番地"
+                %span 必須
+              .userCreate__userinfo__body__formbox__form
+                = f.text_field :street_address, placeholder: '例）青山1-1-1'
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__title
+                = f.label :building, "建物"
+                %span.any 任意
+              .userCreate__userinfo__body__formbox__form
+                = f.text_field :building, placeholder: '例）フォンティスビルディング11F'
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__title
+                = f.label :phone_number, "電話番号(ハイフンなし)"
+                %span.any 任意
+              .userCreate__userinfo__body__formbox__form
+                = f.number_field :phone_number, placeholder: '例）09012341234', pattern: "\d{10,11}"
+
+            .userCreate__userinfo__body__formbox
+              .userCreate__userinfo__body__formbox__next--button
+                = f.submit "変更する"
+
+= render 'homes/footerMain'
