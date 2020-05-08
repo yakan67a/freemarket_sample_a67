@@ -28,6 +28,20 @@ class UsersController < ApplicationController
     end
   end
 
+  # 送付先住所編集用
+  def edit_shipping_address
+  end
+
+  # 送付先住所更新用
+  def update_shipping_address
+    if @shipping_address.update(shipping_address_params)
+      redirect_to update_complete_user_path, notice: '更新しました'
+    else
+      flash.now[:error] = '更新失敗'
+      render :edit_shipping_address
+    end
+  end
+
   def update_complete
   end
 
@@ -36,8 +50,13 @@ class UsersController < ApplicationController
     params.require(:user).permit(:nickname, :profile_image, :profile)
   end
 
+  def shipping_address_params
+    params.require(:shipping_address).permit(:name_first, :name_last, :name_first_kana, :name_last_kana, :zipcode, :prefecture_id, :city, :street_address, :building, :phone_number)
+  end
+
   def set_user
     @user = User.find(params[:id])
+    @shipping_address = ShippingAddress.find(params[:id])
   end
 
 end

@@ -36,7 +36,7 @@
           プロフィール
           = icon('fa', 'chevron-right')
       %li.mypage__sidebar__box__list__item#shipping
-        = link_to "#" do
+        = link_to edit_shipping_address_user_path(current_user.id) do
           送付先変更
           = icon('fa', 'chevron-right')
       %li.mypage__sidebar__box__list__item#MailPassword
