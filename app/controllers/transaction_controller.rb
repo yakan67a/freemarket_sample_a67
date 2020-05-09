@@ -2,8 +2,10 @@ class TransactionController < ApplicationController
   require 'payjp'
   before_action :move_to_login
   before_action :set_item
-  before_action :set_payjp_key, only: :buy
+  before_action :move_to_sold, only: [:buy, :pay]
+  before_action :set_payjp_key, only: [:buy, :pay]
 
+  # 購入確認画面
   def buy 
     @address = current_user.shipping_address 
     @prefecture = Prefecture.find(@address.prefecture_id).name 
@@ -16,25 +18,51 @@ class TransactionController < ApplicationController
     end
   end
 
+  # 支払い処理
   def pay
+    card = current_user.card
+    # カードが削除されていないかチェックする (手順:購入確認画面を開いた状態で、別タブからカード情報を削除したあと、購入を確定する)
+    redirect_to action: :error, item_id: @item.id and return unless current_user.card.card_id
+
+    # 先にhistoryテーブルへ保存。PayjpAPIがエラーを返してきたらロールバックする。
+    History.transaction do 
+      History.create(user_id: current_user.id, item_id: @item.id)
+      @result = Payjp::Charge.create(
+        amount:   @item.price,
+        customer: card.customer_id,
+        currency: "jpy"
+      )
+      redirect_to action: :done, item_id: @item.id 
+      return
+    end
+    rescue Payjp::CardError
+    redirect_to action: :error
+    return
   end
 
+  # 売り切れ時の処理
   def sold
   end
 
+  # 購入完了画面
   def done
   end
 
+  # payjpアクセスでのエラー時
   def error
   end
   
   private
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
+  end
+
   def set_item
     @item = Item.find(params[:item_id])
   end
 
-  def move_to_login
-    redirect_to new_user_session_path unless user_signed_in?
+  def move_to_sold # インスタンス変数@itemを用いているためset_itemより後に呼び出す必要があります。
+    redirect_to action: :sold, item_id: @item.id if @item.history
   end
 
   def set_payjp_key # payjpの秘密鍵をセットする

@@ -37,4 +37,5 @@
 %br
 = "#{@address.name_last} #{@address.name_first}"
 
-= link_to "購入する", "#"
+-# notyet:カード情報が未登録ならボタンをディセーブルにする
+= link_to "購入する", "/transaction/pay/#{@item.id}", method: :post
