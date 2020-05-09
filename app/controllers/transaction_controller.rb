@@ -4,9 +4,16 @@ class TransactionController < ApplicationController
   before_action :set_payjp_key, only: :buy
 
   def buy
-    @item = Item.find(params[:item_id])
-    @address = current_user.shipping_address
-    @prefecture = Prefecture.find(@address.prefecture_id).name
+    @item = Item.find(params[:item_id]) 
+    @address = current_user.shipping_address 
+    @prefecture = Prefecture.find(@address.prefecture_id).name 
+
+    # カード情報登録済みなら、カード情報してビューに渡します。
+    card = current_user.card
+    if card.present? && card.card_id.present?
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card_info = customer.cards.retrieve(card.card_id)
+    end
   end
 
   def sold
