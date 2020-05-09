@@ -25,4 +25,10 @@ Rails.application.routes.draw do
     resources :cards, except: [:show, :edit, :update]
   end
 
+  resources :transaction, only: [] do
+    collection do
+      get 'buy/:item_id', to: 'transaction#buy'
+    end
+    
+  end
 end

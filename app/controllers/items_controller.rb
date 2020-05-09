@@ -15,6 +15,10 @@ def create
   end
 end
 
+def show
+  @item = Item.find(params[:id])
+end
+
 
 def get_category_children
   @category_children = Category.find(params[:parent_id]).children
