@@ -8,4 +8,8 @@ class TransactionController < ApplicationController
 
   def done
   end
+
+  def error
+  end
+  
 end
