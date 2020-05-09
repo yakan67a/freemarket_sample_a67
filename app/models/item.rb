@@ -13,6 +13,6 @@ class Item < ApplicationRecord
 
   validates :items_name, :item_description, :condition, :shipping_costs, :days_to_ship, :price, :category_id, :shipping_area_id, presence: true
   validates :items_name, length: {maximum: 40}
-  validates :price, inclusion: { in: 300..9999999 }
+  validates :price, presence: true,numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
 
 end
