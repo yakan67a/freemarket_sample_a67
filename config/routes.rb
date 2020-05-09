@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     collection do
       get 'buy/:item_id',  to: 'transaction#buy'
       get 'sold/:item_id', to: 'transaction#sold'
+      get 'done/:item_id', to: 'transaction#done'
     end
     
   end

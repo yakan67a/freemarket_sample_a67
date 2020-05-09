@@ -5,5 +5,7 @@ class TransactionController < ApplicationController
 
   def sold
   end
-  
+
+  def done
+  end
 end
