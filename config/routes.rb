@@ -27,7 +27,8 @@ Rails.application.routes.draw do
 
   resources :transaction, only: [] do
     collection do
-      get 'buy/:item_id', to: 'transaction#buy'
+      get 'buy/:item_id',  to: 'transaction#buy'
+      get 'sold/:item_id', to: 'transaction#sold'
     end
     
   end
