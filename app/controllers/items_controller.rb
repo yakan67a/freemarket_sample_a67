@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   # 出品した商品一覧表示用
   def index
+    @items = Item.where(user_id: current_user.id).order('created_at DESC')
   end
     
   def new
