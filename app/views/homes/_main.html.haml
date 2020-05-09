@@ -81,11 +81,10 @@
       .containerBox__lists
         - @item.each do |item|
           .containerBox-list
-            -@history.each do |history|
-              - if item.id == history.item_id
-                .containerBox-list__sold
-                  .containerBox-list__sold__inner
-                    SOLD
+            - if item.history
+              .containerBox-list__sold
+                .containerBox-list__sold__inner
+                  SOLD
           = link_to item_path(item.id), method: :get do
             .containerBox-list__image
               = image_tag item.item_images.first.image_URL.url,width: '220px',  class: 'img'
