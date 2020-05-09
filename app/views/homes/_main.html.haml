@@ -79,39 +79,26 @@
     .containerBox
       .containerBox__headline 新規投稿商品
       .containerBox__lists
-        = link_to "#" do
+        - @item.each do |item|
           .containerBox-list
+            - if item.history
+              .containerBox-list__sold
+                .containerBox-list__sold__inner
+                  SOLD
+          = link_to item_path(item.id), method: :get do
             .containerBox-list__image
-              = image_tag 'material/pict/a001.png', class: 'img'
+              = image_tag item.item_images.first.image_URL.url,width: '220px',  class: 'img'
             .containerBox-list__detail
-              %h3.name product1
+              %h3.name
+              =item.items_name
               %ul.desc
-                %li.price 30000円
+                %li.price
+                  = number_with_delimiter(item.price)
+                  円
                 %li.like
                   %i.fa.fa-star 0
-              %p.tax （税込み）
-        = link_to "#" do
-          .containerBox-list
-            .containerBox-list__image
-              = image_tag 'material/pict/a004.png', class: 'img'
-            .containerBox-list__detail
-              %h3.name product2
-              %ul.desc
-                %li.price 30000円
-                %li.like
-                  %i.fa.fa-star 0
-              %p.tax （税込み）
-        = link_to "#" do
-          .containerBox-list
-            .containerBox-list__image
-              = image_tag 'material/pict/a007.png', class: 'img'
-            .containerBox-list__detail
-              %h3.name product3
-              %ul.desc
-                %li.price 30000円
-                %li.like
-                  %i.fa.fa-star 0
-              %p.tax （税込み）
+              %p.tax（税込み）
+
 
 
   .bottomBanner
