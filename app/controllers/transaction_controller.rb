@@ -1,10 +1,10 @@
 class TransactionController < ApplicationController
   require 'payjp'
   before_action :move_to_login
+  before_action :set_item
   before_action :set_payjp_key, only: :buy
 
-  def buy
-    @item = Item.find(params[:item_id]) 
+  def buy 
     @address = current_user.shipping_address 
     @prefecture = Prefecture.find(@address.prefecture_id).name 
 
@@ -14,6 +14,9 @@ class TransactionController < ApplicationController
       customer = Payjp::Customer.retrieve(card.customer_id)
       @card_info = customer.cards.retrieve(card.card_id)
     end
+  end
+
+  def pay
   end
 
   def sold
@@ -26,6 +29,10 @@ class TransactionController < ApplicationController
   end
   
   private
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
   def move_to_login
     redirect_to new_user_session_path unless user_signed_in?
   end
