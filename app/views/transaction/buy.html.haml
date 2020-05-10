@@ -1,3 +1,5 @@
+= render "shared/single_header"
+
 購入内容の確認
 %br
 
@@ -25,11 +27,11 @@
   %br
   = render "cards/card_logo"
 - else
-  = link_to "登録してください", "#"
+  = link_to "登録してください", "/transaction/card/#{@item.id}"
 
 %br
 配送先
-= link_to "変更する", "#"
+= link_to "変更する", "/transaction/address/#{@item.id}"
 %br
 = "〒#{@address.zipcode[0, 3]}-#{@address.zipcode[3, 4]}"
 %br
@@ -42,3 +44,5 @@
   = link_to "購入する", "/transaction/pay/#{@item.id}", method: :post 
 - else 
   購入する
+
+= render "shared/single_footer"

@@ -44,6 +44,18 @@ class TransactionController < ApplicationController
   # payjpアクセスでのエラー時
   def error
   end
+
+  def card
+  end
+
+  def register_card
+  end
+
+  def address
+  end
+
+  def update_address
+  end
   
   private
   def move_to_login
