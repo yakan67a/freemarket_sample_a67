@@ -1,11 +1,11 @@
 class TransactionController < ApplicationController
   require 'payjp'
   before_action :move_to_login
-  before_action :set_item, only: [:buy, :pay, :sold, :done, :error]
+  before_action :set_item
   before_action :move_to_sold, only: [:buy, :pay]
   before_action :set_user_address, only: [:buy, :done]
-  before_action :set_payjp_key, only: [:buy, :pay, :done]
-  before_action :set_card_info, only: [:buy, :done]
+  before_action :set_payjp_key, only: [:buy, :pay, :done, :card,:register_card]
+  before_action :set_card_info, only: [:buy, :done, :card]
 
   # 購入確認画面
   def buy
@@ -49,6 +49,47 @@ class TransactionController < ApplicationController
   end
 
   def register_card
+    token = params["payjp-token"]
+
+    if token.blank? # トークンの取得に失敗していたらやりなおしを求める
+      @error_message = "カードの登録に失敗しました。もう一度お試しください。"
+      render :card, item_id: @item.id
+    else
+      if current_user.card.blank?
+        # ユーザーがcardテーブルを持っていない場合の処理
+        customer = Payjp::Customer.create(
+          description: "test", 
+          card: token, 
+          metadata: {user_id: current_user.id}
+          )
+
+        card = Card.new(
+          user_id: current_user.id, 
+          customer_id: customer.id, 
+          card_id: customer.default_card
+          )
+        
+        if card.save
+          redirect_to action: :buy, item_id: @item.id
+        else
+          @error_message = "カードの登録に失敗しました。もう一度お試しください。"
+          render :card, item_id: @item.id
+        end
+
+      else
+        # ユーザーがcardテーブルを持っている場合の処理
+        card = current_user.card
+        customer = Payjp::Customer.retrieve(card.customer_id)
+        response = customer.cards.create(card: token, default: true)
+
+        if card.update(card_id: response.id)
+          redirect_to action: :buy, item_id: @item.id
+        else
+          @error_message = "カードの登録に失敗しました。もう一度お試しください。"
+          render :card, item_id: @item.id
+        end
+      end
+    end
   end
 
   def address

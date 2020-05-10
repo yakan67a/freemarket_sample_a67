@@ -1,3 +1,4 @@
 = render "shared/single_header"
-= render "cards/card_form"
+= form_with method: :post, id: "charge-form", name: "inputForm", local: true do |f|
+  = render partial: "cards/card_form", locals: {f: f, error_message: @error_message}
 = render "shared/single_footer"
