@@ -1,28 +1,21 @@
 class TransactionController < ApplicationController
   require 'payjp'
   before_action :move_to_login
-  before_action :set_item
+  before_action :set_item, only: [:buy, :pay, :sold, :done, :error]
   before_action :move_to_sold, only: [:buy, :pay]
-  before_action :set_payjp_key, only: [:buy, :pay]
+  before_action :set_user_address, only: [:buy, :done]
+  before_action :set_payjp_key, only: [:buy, :pay, :done]
+  before_action :set_card_info, only: [:buy, :done]
 
   # 購入確認画面
-  def buy 
-    @address = current_user.shipping_address 
-    @prefecture = Prefecture.find(@address.prefecture_id).name 
-
-    # カード情報登録済みなら、カード情報してビューに渡します。
-    card = current_user.card
-    if card.present? && card.card_id.present?
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @card_info = customer.cards.retrieve(card.card_id)
-    end
+  def buy
   end
 
   # 支払い処理
   def pay
     card = current_user.card
     # カードが削除されていないかチェックする (手順:購入確認画面を開いた状態で、別タブからカード情報を削除したあと、購入を確定する)
-    redirect_to action: :error, item_id: @item.id and return unless current_user.card.card_id
+    redirect_to action: :error, item_id: @item.id and return unless card.card_id
 
     # 先にhistoryテーブルへ保存。PayjpAPIがエラーを返してきたらロールバックする。
     History.transaction do 
@@ -36,7 +29,7 @@ class TransactionController < ApplicationController
       return
     end
     rescue Payjp::CardError
-    redirect_to action: :error
+    redirect_to action: :error, item_id: @item.id
     return
   end
 
@@ -65,8 +58,21 @@ class TransactionController < ApplicationController
     redirect_to action: :sold, item_id: @item.id if @item.history
   end
 
+  def set_user_address
+    @address = current_user.shipping_address 
+    @prefecture = Prefecture.find(@address.prefecture_id).name 
+  end
+
   def set_payjp_key # payjpの秘密鍵をセットする
     Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
+  end
+
+  def set_card_info # カード情報登録済みなら、カード情報を取得してビューに渡します。
+    card = current_user.card 
+    if card.present? && card.card_id.present?
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card_info = customer.cards.retrieve(card.card_id)
+    end
   end
 
 end
