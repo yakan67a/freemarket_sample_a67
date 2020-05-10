@@ -27,11 +27,15 @@ Rails.application.routes.draw do
 
   resources :transaction, only: [] do
     collection do
-      get  'buy/:item_id',   to: 'transaction#buy'
-      post 'pay/:item_id',   to: 'transaction#pay'
-      get  'sold/:item_id',  to: 'transaction#sold'
-      get  'done/:item_id',  to: 'transaction#done'
-      get  'error/:item_id', to: 'transaction#error'
+      get   'buy/:item_id',     to: 'transaction#buy'
+      post  'pay/:item_id',     to: 'transaction#pay'
+      get   'sold/:item_id',    to: 'transaction#sold'
+      get   'done/:item_id',    to: 'transaction#done'
+      get   'error/:item_id',   to: 'transaction#error'
+      get   'card/:item_id',    to: 'transaction#card'
+      post  'card/:item_id',    to: 'transaction#register_card'
+      get   'address/:item_id', to: 'transaction#address'
+      patch 'address/:item_id', to: 'transaction#update_address'
     end
     
   end
