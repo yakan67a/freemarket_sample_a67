@@ -38,4 +38,7 @@
 = "#{@address.name_last} #{@address.name_first}"
 
 -# notyet:カード情報が未登録ならボタンをディセーブルにする
-= link_to "購入する", "/transaction/pay/#{@item.id}", method: :post
+- if @card_info.present? && @item.history.blank?
+  = link_to "購入する", "/transaction/pay/#{@item.id}", method: :post 
+- else 
+  購入する
