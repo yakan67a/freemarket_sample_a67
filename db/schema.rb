@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_04_30_052617) do
     t.integer "user_id"
     t.integer "category_id", null: false
     t.integer "brand_id"
-    t.integer "shipping_area_id", null: false
+    t.integer "prefecture_id"
     t.integer "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
