@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   has_one    :rating, dependent: :destroy
   has_one    :history
 
-  validates :items_name, :item_description, :condition, :shipping_costs, :days_to_ship, :price, :category_id, :shipping_area_id, presence: true
+  validates :items_name, :item_description, :condition, :shipping_costs, :days_to_ship, :price, :category_id, :prefecture_id, presence: true
   validates :items_name, length: {maximum: 40}
   validates :price, presence: true,numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
 
