@@ -53,20 +53,31 @@
             %th 発送日の目安
             %td 
               = @item.days_to_ship
-      .main__content__middle--buy
-        = link_to "購入画面に進む", "/transaction/buy/#{@item.id}",class:"button"
-      .main__content__middle--option
-        %ul
-          %li.favorite
-            =icon("fas","star")
-            %span
-              お気に入り
-            %span
-              0
-          %li.calling
-            =icon("fas","phone")
-            %span
-              不適切な商品の通報
+      - if user_signed_in? && current_user.id != @item.user_id
+        .main__content__middle--buy
+          = link_to "購入画面に進む", "/transaction/buy/#{@item.id}",class:"button"
+        .main__content__middle--option
+          %ul
+            %li.favorite
+              =icon("fas","star")
+              %span
+                お気に入り
+              %span
+                0
+            %li.calling
+              =icon("fas","phone")
+              %span
+                不適切な商品の通報
+      - elsif user_signed_in? && current_user.id == @item.user_id
+        .main__content__middle--edit
+          = link_to "編集する","#",class:"edit-btn"
+        .main__content__middle--delete
+          = link_to "削除する","#",class:"delete-btn"
+      - else 
+        .main__content__middle--login
+          = link_to "ログインする","/users/sign_in",class:"login-btn"
+        .main__content__middle--sign
+          = link_to "新規登録する","/users/sign_up",class: "sign-btn"
     .main__content__comment
       %textarea
       .main__content__comment--message
@@ -76,7 +87,7 @@
       .main__content__comment--post
         = icon("fas","comment")
         %span
-          コメントする
+          = link_to "コメントする","#"
     .main__content__bottom
       %ul
         %li
