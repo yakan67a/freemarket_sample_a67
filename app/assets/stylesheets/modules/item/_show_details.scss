@@ -64,24 +64,14 @@
         }
       }
       &--buy{
-        text-align: center;
         .button {
-            width: 100%;
-            display: inline-block;
-            border-radius: 2%;         
-            font-size: 18pt;       
-            text-align: center;     
-            cursor: pointer;    
-            padding: 14px 100px;  
-            background: #3CCACE;     
-            color: white;     
-            line-height: 1em;         
-            transition: .3s;         
-            border: 1px solid #dedede;
+          background: #3CCACE;     
+          color: white;     
+          @include btn-style
           }
         .button:hover {
-            color:#3CCACE;    
-            background:white;   
+          color:#3CCACE;    
+          background:white;   
         }
       }
     &--option{
@@ -103,6 +93,52 @@
           padding: 6px 10px;
           font-size: 14px;
         }
+      }
+    }
+    &--edit{
+      .edit-btn{
+        background: #3CCACE;     
+        color: white;     
+        @include btn-style
+      }
+      .edit-btn:hover{
+        background-color: white;
+        color:#3CCACE;
+      }
+    }
+    &--delete{
+      margin-top: 20px;
+      .delete-btn{
+        background: gray;     
+        color: white;     
+        @include btn-style
+      }
+      .delete-btn:hover{
+        background-color: white;
+        color: gray;
+      }
+    }
+    &--login{
+      .login-btn{
+        background-color: #EA352D;
+        color: white;
+        @include btn-style
+      }
+      .login-btn:hover{
+        background-color: white;
+        color:#EA352D;
+      }
+    }
+    &--sign{
+      margin-top: 20px;
+      .sign-btn{
+        background-color: #EA352D;
+        color: white;
+        @include btn-style
+      }
+      .sign-btn:hover{
+        background-color: white;
+        color:#EA352D;
       }
     }
     }
@@ -132,6 +168,9 @@
         border-radius: 100px;
         line-height: 48px;
         cursor: pointer;
+        a{
+          color: white;
+        }
       }
     }
     &__bottom{
