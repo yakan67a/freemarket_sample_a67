@@ -27,11 +27,11 @@
   %br
   = render "cards/card_logo"
 - else
-  = link_to "登録してください", "/transaction/card/#{@item.id}"
+  = link_to "登録してください", card_transaction_path(@item.id)
 
 %br
 配送先
-= link_to "変更する", "/transaction/address/#{@item.id}"
+= link_to "変更する", address_transaction_path(@item.id)
 %br
 = "〒#{@address.zipcode[0, 3]}-#{@address.zipcode[3, 4]}"
 %br
@@ -40,7 +40,7 @@
 = "#{@address.name_last} #{@address.name_first}"
 
 - if @card_info.present? && @item.history.blank? && current_user.id != @item.user_id
-  = link_to "購入する", "/transaction/pay/#{@item.id}", method: :post 
+  = link_to "購入する", pay_transaction_path(@item.id), method: :post 
 - else 
   購入する
 

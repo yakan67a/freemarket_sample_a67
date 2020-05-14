@@ -15,21 +15,21 @@ class TransactionController < ApplicationController
   def pay
     card = current_user.card
     # カードが削除されていないかチェックする (手順:購入確認画面を開いた状態で、別タブからカード情報を削除したあと、購入を確定する)
-    redirect_to action: :error, item_id: @item.id and return unless card.card_id
+    redirect_to action: :error, id: @item.id and return unless card.card_id
 
     # 先にhistoryテーブルへ保存。PayjpAPIがエラーを返してきたらロールバックする。
     History.transaction do 
-      History.create(user_id: current_user.id, item_id: @item.id)
+      History.create(user_id: current_user.id, id: @item.id)
       @result = Payjp::Charge.create(
         amount:   @item.price,
         customer: card.customer_id,
         currency: "jpy"
       )
-      redirect_to action: :done, item_id: @item.id 
+      redirect_to action: :done, id: @item.id 
       return
     end
     rescue Payjp::CardError
-    redirect_to action: :error, item_id: @item.id
+    redirect_to action: :error, id: @item.id
     return
   end
 
@@ -53,7 +53,7 @@ class TransactionController < ApplicationController
 
     if token.blank? # トークンの取得に失敗していたらやりなおしを求める
       @error_message = "カードの登録に失敗しました。もう一度お試しください。"
-      render :card, item_id: @item.id
+      render :card, id: @item.id
     else
       if current_user.card.blank?
         # ユーザーがcardテーブルを持っていない場合の処理
@@ -70,10 +70,10 @@ class TransactionController < ApplicationController
           )
         
         if card.save
-          redirect_to action: :buy, item_id: @item.id
+          redirect_to action: :buy, id: @item.id
         else
           @error_message = "カードの登録に失敗しました。もう一度お試しください。"
-          render :card, item_id: @item.id
+          render :card, id: @item.id
         end
 
       else
@@ -83,10 +83,10 @@ class TransactionController < ApplicationController
         response = customer.cards.create(card: token, default: true)
 
         if card.update(card_id: response.id)
-          redirect_to action: :buy, item_id: @item.id
+          redirect_to action: :buy, id: @item.id
         else
           @error_message = "カードの登録に失敗しました。もう一度お試しください。"
-          render :card, item_id: @item.id
+          render :card, id: @item.id
         end
       end
     end
@@ -112,11 +112,11 @@ class TransactionController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:item_id])
+    @item = Item.find(params[:id])
   end
 
   def move_to_sold # インスタンス変数@itemを用いているためset_itemより後に呼び出す必要があります。
-    redirect_to action: :sold, item_id: @item.id if @item.history
+    redirect_to action: :sold, id: @item.id if @item.history
   end
 
   def set_user_address
