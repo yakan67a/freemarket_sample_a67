@@ -21,13 +21,16 @@
         margin: 10px;
         .bigbox{
           .bigPict{
-            object-fit: cover;
+            object-fit: contain;
           }
           .smallbox{
             display: flex;
             justify-content: center;
           }
         }
+      }
+      p.explanation{
+        text-align: center;
       }
       .price__box{
         text-align: center;

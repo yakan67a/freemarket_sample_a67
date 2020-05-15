@@ -8,14 +8,15 @@
       .image__box
         %ul.bigbox
           %li 
-            = image_tag 'material/pict/a001.png',  height: '330px', width: '100%',class: 'bigPict'
+            - @item.item_images.each.with_index do |item_image,i|
+              - if i==0
+                = image_tag "#{item_image.image_URL}",height: '330px', width: '600px',class: 'bigPict'
             %ul.smallbox
               %li
-                = image_tag 'material/pict/a004.png', height: '90', width: '140', class: "smallPict--first"
-              %li
-                = image_tag 'material/pict/a007.png', height: '90', width: '140',class: "smallPict--second"
-              %li
-                = image_tag 'material/pict/a001.png', height: '90', width: '140', class: "smallPict--third"
+                - @item.item_images.each.with_index do |item_image,i|
+                  = image_tag "#{item_image.image_URL}", height: '90', width: '140'
+      %p.explanation
+        画像にカーソルを合わせると拡大されます
       .price__box
         %p.price
           ¥
@@ -55,7 +56,7 @@
               = @item.days_to_ship
       - if user_signed_in? && current_user.id != @item.user_id
         .main__content__middle--buy
-          = link_to "購入画面に進む", "/transaction/buy/#{@item.id}",class:"button"
+          = link_to "購入画面に進む", buy_transaction_path(@item.id),class:"button"
         .main__content__middle--option
           %ul
             %li.favorite
