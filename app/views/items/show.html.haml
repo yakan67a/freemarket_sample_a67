@@ -14,16 +14,7 @@
             %ul.smallbox
               %li
                 - @item.item_images.each.with_index do |item_image,i|
-                  -if i==0
-                    = image_tag "#{item_image.image_URL}", height: '90', width: '140'
-                  -elsif i==1
-                    = image_tag "#{item_image.image_URL}", height: '90', width: '140'
-                  -elsif i==2
-                    = image_tag "#{item_image.image_URL}", height: '90', width: '140'
-                  -elsif i==3
-                    = image_tag "#{item_image.image_URL}", height: '90', width: '140'
-                  -else
-                    = image_tag "#{item_image.image_URL}", height: '90', width: '140'
+                  = image_tag "#{item_image.image_URL}", height: '90', width: '140'
       %p.explanation
         画像にカーソルを合わせると拡大されます
       .price__box
