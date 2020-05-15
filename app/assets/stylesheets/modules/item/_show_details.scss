@@ -21,7 +21,7 @@
         margin: 10px;
         .bigbox{
           .bigPict{
-            object-fit: cover;
+            object-fit: contain;
           }
           .smallbox{
             display: flex;
