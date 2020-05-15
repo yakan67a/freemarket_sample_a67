@@ -29,9 +29,9 @@
     }
     .flexbox{
       display: flex;
-      flex-wrap: wrap;
       margin: 0 auto;
       width: 660px;
+      width: 100%;
       cursor: pointer;
       .js-file{
         display: none;
@@ -40,7 +40,6 @@
       .new-wrapper__main__preview{
         margin: 16px 0;
         display: flex;
-        flex-wrap: wrap;
         &__image{
           position: relative;
           &__img{
@@ -58,9 +57,9 @@
         }
       }
       #image-wrapper{
+        width: 100%;
         .form__items__main__image--field{
           cursor: pointer;
-          width: 620px;
           height: 160px;
           margin: 16px auto;
           background-color: #eee;
