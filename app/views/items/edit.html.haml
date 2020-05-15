@@ -52,11 +52,11 @@
             %span
               必須
           .form__details__category--column
-            = f.collection_select :category_id, @category_parent_array, :id, :name, {}, { id: 'list__category__parent' }
+            = f.collection_select :category_id, @category_parent_array, :id, :name, { selected: @item.category.root.id }, { id: 'list__category__parent' }
           .form__details__category--children
-            = f.collection_select :category_id, @category_children_array, :id, :name, {}, { id: 'list__category__children' }
+            = f.collection_select :category_id, @category_children_array, :id, :name, { selected: @item.category.parent.id }, { id: 'list__category__children' }
           .form__details__category--grandchildren
-            = f.collection_select :category_id, @category_grandchildren_array, :id, :name, {}, { id: 'list__category__grandchildren' }
+            = f.collection_select :category_id, @category_grandchildren_array, :id, :name, { selected: @item.category.id }, { id: 'list__category__grandchildren' }
 
         .form__details__brand
           .form__details__brand--title
