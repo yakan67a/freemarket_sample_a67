@@ -1,0 +1,39 @@
+= render "shared/single_header"
+
+購入が完了しました
+%br
+
+= image_tag @item.item_images.first.image_URL.url
+= @item.items_name
+%br
+
+= "¥#{@item.price} (税込) #{@item.shipping_costs}"
+%br
+  
+支払い金額
+= "¥#{@item.price}"
+%br
+
+配送先
+%br
+= "〒#{@address.zipcode[0, 3]}-#{@address.zipcode[3, 4]}"
+%br
+= "#{@prefecture} #{@address.city} #{@address.street_address} #{@address.building}"
+%br
+= "#{@address.name_last} #{@address.name_first}"
+
+支払い方法
+%br
+クレジットカード
+%br
+= "**** **** **** #{@card_info.last4}"
+%br
+有効期限
+= "#{@card_info.exp_month.to_s} / #{@card_info.exp_year.to_s.slice(2,3)}"
+%br
+= render "cards/card_logo"
+
+%br
+= link_to "トップに戻る", root_path
+
+= render "shared/single_footer"

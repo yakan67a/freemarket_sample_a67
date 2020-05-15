@@ -8,10 +8,17 @@ describe Card do
       expect(card).to be_valid
     end
 
-    it "user_idが存在ない場合登録できないこと" do
+    it "user_idが存在しない場合登録できないこと" do
       card = build(:card, user_id: "")
       card.valid?
       expect(card.errors[:user_id]).to include("を入力してください")
+    end
+
+    it "存在しないユーザーのuser_idの場合登録できないこと" do
+      user = create(:user)
+      card = build(:card, user_id: user.id + 1)
+      card.valid?
+      expect(card.errors[:user]).to include("を入力してください")
     end
 
     it "customer_idがない場合登録できないこと" do
