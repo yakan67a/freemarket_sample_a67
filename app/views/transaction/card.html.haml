@@ -1,4 +1,11 @@
 = render "shared/single_header"
-= form_with method: :post, id: "charge-form", name: "inputForm", local: true do |f|
-  = render partial: "cards/card_form", locals: {f: f, error_message: @error_message}
+.single-main
+  .single-container
+    .card-form__header
+      .card-form__headerTitle
+        支払い方法
+    .card-form__main
+      .card-form__mainForm
+        = form_with method: :post, id: "charge-form", name: "inputForm", local: true do |f|
+          = render partial: "cards/card_form", locals: {f: f, error_message: @error_message}
 = render "shared/single_footer"
