@@ -1,0 +1,120 @@
+.single-main {
+  background-color: #eeeeee;
+
+  .single-container {
+    @include user_input_box;
+
+    &__header {
+      @include user_title;
+    }
+
+    &__box {
+      padding: 32px 16px;
+      border-bottom: 1px solid #eeeeee;
+
+      &--inner {
+        max-width: 343px;
+        margin: 0 auto;
+
+        .buy-item {
+          display: flex;
+          justify-content: flex-start;
+
+          &__image {}
+
+          &__detail {
+            margin-left: 16px;
+
+            &--name {
+              font-size: 14px;
+              padding: 0 0 8px;
+              line-height: 1.5;
+            }
+
+            &--price {
+              font-size: 15px;
+              font-weight: 600;
+            }
+          }
+        }
+
+        .buy-price {
+          display: flex;
+          justify-content: space-between;
+          font-weight: 600;
+          padding-bottom: 32px;
+          border-bottom: 1px solid #eeeeee;
+
+          &--left {
+            font-size: 18px;
+            line-height: 45px;
+          }
+
+          &--right {
+            font-size: 30px;
+          }
+        }
+
+        .pay-method {
+          padding: 32px 0;
+          border-bottom: 1px solid #eeeeee;
+          font-size: 14px;
+
+          &__header {
+            margin-bottom: 8px;
+            font-weight: bold;
+          }
+
+          &__main {
+            &--register {}
+          }
+        }
+
+        .user-address {
+          padding: 32px 0;
+          border-bottom: 1px solid #eeeeee;
+          font-size: 14px;
+
+          &__header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+
+            &--title {
+              font-weight: bold;
+            }
+
+            &--fix {}
+          }
+
+          &__main {
+            &--address {}
+            &--name {}
+          }
+        }
+
+        .submit-buy {
+
+          &__button {
+            @include user_button;
+            cursor: pointer;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            font-weight: bold;
+          }
+
+          &--disabled {
+            @include user_button;
+            background-color: gray;
+            text-align: center;
+            color: white;
+            line-height: 50px;
+            font-weight: bold;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+}
