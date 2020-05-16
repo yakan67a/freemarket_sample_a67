@@ -17,6 +17,7 @@ end
 
 def show
   @item = Item.find(params[:id])
+  @category = @item.category
 end
 
 

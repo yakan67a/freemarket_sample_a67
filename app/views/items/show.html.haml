@@ -35,6 +35,14 @@
           %tr
             %th カテゴリ
             %td メンズ
+              = link_to root_path,class:"categoryLink" do
+                = @category.root.name
+                %br
+              = link_to root_path,class:"categoryLink" do
+                = @category.parent.name
+                %br
+              = link_to root_path,class:"categoryLink" do
+                = @category.name
           %tr
             %th ブランド
             %td 
