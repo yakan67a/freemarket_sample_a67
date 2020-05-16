@@ -19,7 +19,7 @@ class TransactionController < ApplicationController
 
     # 先にhistoryテーブルへ保存。PayjpAPIがエラーを返してきたらロールバックする。
     History.transaction do 
-      History.create(user_id: current_user.id, id: @item.id)
+      History.create(user_id: current_user.id, item_id: @item.id)
       @result = Payjp::Charge.create(
         amount:   @item.price,
         customer: card.customer_id,
