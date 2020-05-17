@@ -1,6 +1,14 @@
 = render "shared/single_header"
 
-エラーが発生したため購入に失敗しました
-= link_to "商品画面に戻る", item_path(@item.id)
+.single-main
+  .single-container
+    .single-container__header
+      エラーが発生したため購入に失敗しました
+    .single-container__box
+      .single-container__box--inner
+        .back-item-detail
+          = link_to "商品画面に戻る", item_path(@item.id)
 
+-# 画面下部に余白がでないようにする
+.purchaseFooterMargin
 = render "shared/single_footer"

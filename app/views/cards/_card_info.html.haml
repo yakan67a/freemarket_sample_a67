@@ -12,6 +12,6 @@
         .card-info__mainContentLeft--number
           = "**** **** **** #{@card_info.last4}"
         .card-info__mainContentLeft--expDate
-          = "#{@card_info.exp_month.to_s} / #{@card_info.exp_year.to_s.slice(2,3)}"
+          = format("%02d / %02d", @card_info.exp_month, @card_info.exp_year.to_s.slice(2,3))
       .card-info__mainContentRight
         = link_to "削除する", user_card_path(user_id: current_user.id, id: @card.id), method: :delete, class: "card-info__mainContentRight--delete"

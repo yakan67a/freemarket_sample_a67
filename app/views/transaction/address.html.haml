@@ -1,4 +1,9 @@
 = render "shared/single_header"
-= form_with model: @address, url: address_transaction_path(@item.id), method: :patch, local: true do |f|
-  = render partial: 'shared/address_form', locals: {f: f}
+.single-main
+  .single-container
+    .userCreate__userinfo__title
+      送付先住所変更
+    .userCreate__userinfo__body
+      = form_with model: @address, url: address_transaction_path(@item.id), method: :patch, local: true do |f|
+        = render partial: 'shared/address_form', locals: {f: f}
 = render "shared/single_footer"

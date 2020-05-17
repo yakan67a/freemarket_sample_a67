@@ -3,7 +3,7 @@ class TransactionController < ApplicationController
   before_action :move_to_login
   before_action :set_item
   before_action :move_to_sold, only: [:buy, :pay]
-  before_action :set_user_address, only: [:buy, :done]
+  before_action :set_user_address, only: [:buy, :done, :address, :update_address]
   before_action :set_payjp_key, only: [:buy, :pay, :done, :card,:register_card]
   before_action :set_card_info, only: [:buy, :done, :card]
 
@@ -93,11 +93,9 @@ class TransactionController < ApplicationController
   end
 
   def address
-    @address = current_user.shipping_address
   end
 
   def update_address
-    @address = current_user.shipping_address
     if @address.update(shipping_address_params)
       render action: :buy, user_id: @item.id
     else
@@ -120,8 +118,7 @@ class TransactionController < ApplicationController
   end
 
   def set_user_address
-    @address = current_user.shipping_address 
-    @prefecture = Prefecture.find(@address.prefecture_id).name 
+    @address = current_user.shipping_address
   end
 
   def set_payjp_key # payjpの秘密鍵をセットする
