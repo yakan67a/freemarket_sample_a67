@@ -9,24 +9,23 @@
         .form__items__main__text 
           最大5枚までアップロードできます
 
-        .flexbox
-          .new-wrapper__main__preview
-            - @item.item_images.each_with_index do |image, index|
-              .new-wrapper__main__preview__image
-                = image_tag image.image_URL.url, class: 'new-wrapper__main__preview__image__img', name: "item[item_images_attributes][#{index + 5 }][image_URL]", id: "item_item_images_attributes_#{index + 5 }_image_URL", type: 'file'
-                .delete-btn{:index => "#{ index + 5 }"}
-                  = icon('far', 'times-circle')
-
-          = f.label :"item_images_attributes_0_image_URL", id: 'image-wrapper' do
-            .form__items__main__image--field
-              = icon('fas', 'camera')
-              .form__items__main__image--field__text
-                クリックして選択
-          = f.fields_for :item_images do |i|
-            = i.file_field :image_URL, class: "js-file"
-
-          - @item.item_images.length.upto(4) do |i|
-            %input{ name: "item[item_images_attributes][#{i}][image_URL]", id: "item_item_images_attributes_#{i}_image_URL", class: "js-file", type: "file" }
+        %ul#previews
+          = f.fields_for :item_image do |item_image|
+            - @item.item_images.each_with_index do |image, i|
+              %li.image-preview
+                %label.upload-label{style:"display: none;"}
+                  .upload-label__text
+                    ドラッグアンドドロップ
+                    %br
+                    またはクリックしてファイルをアップロード
+                    .input-area
+                      = item_image.file_field :image_URL, value: image.image_URL ,class: "hidden image_upload"
+                      = item_image.hidden_field :id, value: image.id, name: "item[item_image][#{i}]"
+                .image-preview__wapper
+                  = image_tag image.image_URL.to_s, class:"preview"
+                .image-preview_btn
+                  .image-preview_btn_edit 編集
+                  .image-preview_btn_delete 削除
 
       .form__items
         .form__items__name
