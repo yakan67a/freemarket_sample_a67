@@ -65,7 +65,7 @@ class ItemsController < ApplicationController
         render update_complete_user_path
       end
     else
-      redirect_back(fallback_location: root_path,flash: {success: '画像がありません'})
+      redirect_back(fallback_location: root_path)
     end
 
   end

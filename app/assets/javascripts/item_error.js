@@ -6,6 +6,10 @@ $(function(){
     if(imageData==""){
       $(".post__drop__box__container").after("<p class='error'>画像を選択してください</p>");
     }
+    var editImageData = $(".image-preview").length
+    if(editImageData==0){
+      $(".input").after("<p class='error'>画像を選択してください</p>");
+    }
 
     var CategoryParentData = $("#list__category__parent").val();
     var CategoryChildData  = $("#list__category__children").val();
