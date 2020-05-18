@@ -5,7 +5,7 @@ class TransactionController < ApplicationController
   before_action :move_to_sold, only: [:buy, :pay]
   before_action :set_user_address, only: [:buy, :done, :address, :update_address]
   before_action :set_payjp_key, only: [:buy, :pay, :done, :card,:register_card]
-  before_action :set_card_info, only: [:buy, :done, :card]
+  before_action :set_card_info, only: [:buy, :done, :card, :update_address]
 
   # 購入確認画面
   def buy
