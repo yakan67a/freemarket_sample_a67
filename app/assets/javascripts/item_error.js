@@ -8,7 +8,7 @@ $(function(){
     }
     var editImageData = $(".image-preview").length
     if(editImageData==0){
-      $(".input").after("<p class='error'>画像を選択してください</p>");
+      $("#previews").after("<p class='error'>画像を選択してください</p>");
     }
 
     var CategoryParentData = $("#list__category__parent").val();

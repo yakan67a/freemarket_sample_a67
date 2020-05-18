@@ -15,17 +15,17 @@
               %li.image-preview
                 %label.upload-label{style:"display: none;"}
                   .upload-label__text
-                    ドラッグアンドドロップ
+                    = icon('fa', 'camera')
                     %br
-                    またはクリックしてファイルをアップロード
+                    クリックして選択
                     .input-area
                       = item_image.file_field :image_URL, value: image.image_URL ,class: "hidden image_upload"
                       = item_image.hidden_field :id, value: image.id, name: "item[item_image][#{i}]"
                 .image-preview__wapper
                   = image_tag image.image_URL.to_s, class:"preview"
                 .image-preview_btn
-                  .image-preview_btn_edit 編集
-                  .image-preview_btn_delete 削除
+                  .image-preview_btn_delete
+                    = icon('far', 'times-circle')
 
       .form__items
         .form__items__name
@@ -121,5 +121,4 @@
               販売利益
           .form__sell__profit--result
             %p.result__profit
-        =f.submit '出品する', class: 'submit-btn'
-        =f.button '戻る',type: "button" ,class: 'exit-btn', onClick: "history.back()"
+        =f.submit '更新する', class: 'submit-btn'

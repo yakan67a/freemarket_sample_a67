@@ -1,0 +1,39 @@
+#previews {
+  display: flex;
+  margin: 10px 0;
+}
+.image-preview {
+  &__wapper {
+    img {
+      width: 127px;
+      margin-right: 1px;
+      height: 160px;
+      object-fit: cover;
+    }
+  }
+  &_btn {
+    display: flex;
+    justify-content: space-around ;
+    &_delete {
+      text-align: left;
+      width: 95%;
+      cursor: pointer;
+    }
+  }
+}
+.upload-label {
+  cursor: pointer;
+  height: 160px;
+  background-color: #eee;
+  border: 1px dashed #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__text{
+    text-align: center;
+    .fa-camera{
+      font-size: 20px;
+      padding-bottom: 10px;
+    }
+  }
+}
