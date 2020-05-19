@@ -9,6 +9,6 @@ FactoryBot.define do
     price                 {"400"}
     category_id           {"280"}
     brand_id              {"1"}
-    shipping_area_id      {"7"}    
+    shipping_area_id      {"7"}
   end
 end
