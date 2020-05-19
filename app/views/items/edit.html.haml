@@ -88,11 +88,11 @@
                 = f.select :shipping_costs, [["選択してください",""],["送料込み(出品者負担)","送料込み(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]],{},{class: "validate cost"}
             .form__ship__area
               .form__ship__area--title
-                =f.label :shipping_area_id, "発送元の地域"
+                =f.label :prefecture_id, "発送元の地域"
                 %span
                   必須
               .form__ship__area--column
-                = f.collection_select :shipping_area_id, Prefecture.all, :id, :name,{include_blank: "---"},{class:"validate prefecture"}
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name,{include_blank: "---"},{class:"validate prefecture"}
             .form__ship__days 
               .form__ship__days--title
                 =f.label :days_to_ship, "発送までの日数"
