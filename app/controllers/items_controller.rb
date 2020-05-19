@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+  before_action :set_item, only: [:edit, :update]
+
   # 出品した商品一覧表示用
   def index
     @items = Item.where(user_id: current_user.id).order('created_at DESC')
@@ -22,7 +24,6 @@ class ItemsController < ApplicationController
 
   # 出品商品編集用
   def edit
-    @item = Item.find(params[:id])
     grandchild_category = @item.category
     child_category = grandchild_category.parent
 
@@ -42,7 +43,6 @@ class ItemsController < ApplicationController
 
   # 編集した商品更新用
   def update
-    @item = Item.find(params[:id])
 
     if params[:item].keys.include?("item_image") || params[:item].keys.include?("item_images_attributes") 
       if @item.valid?
@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
           end
         end
         @item.update(item_params)
-        redirect_to update_complete_user_path(@item), notice: "商品を更新しました"
+        redirect_to update_complete_user_path(current_user.id), notice: "商品を更新しました"
       else
         flash.now[:error] = '更新失敗'
         render update_complete_user_path
@@ -91,4 +91,9 @@ class ItemsController < ApplicationController
         :shipping_area_id,
         item_images_attributes: [:image_URL, :_destroy, :id]).merge(user_id: current_user.id)
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
 end
