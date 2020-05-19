@@ -1,0 +1,122 @@
+= render "homes/headerMain"
+
+.main
+  .main__content
+    .main__content__middle
+      %h3.main__content__middle--name 
+        = @item.items_name
+      .image__box
+        %ul.bigbox
+          %li 
+            - @item.item_images.each.with_index do |item_image,i|
+              - if i==0
+                = image_tag "#{item_image.image_URL}",height: '330px', width: '600px',class: 'bigPict'
+            %ul.smallbox
+              %li
+                - @item.item_images.each.with_index do |item_image,i|
+                  = image_tag "#{item_image.image_URL}", height: '90', width: '140'
+      %p.explanation
+        画像にカーソルを合わせると拡大されます
+      .price__box
+        %p.price
+          ¥
+          %span
+            = @item.price
+        %p.text
+          (税込)送料込み
+      .description__box
+        = @item.item_description
+      .table__box
+        %table
+          %tr
+            %th 出品者
+            %td 
+              = @item.user.nickname
+          %tr
+            %th カテゴリ
+            %td
+              = link_to root_path,class:"categoryLink" do
+                = @category.root.name
+                %br
+              = link_to root_path,class:"categoryLink" do
+                = @category.parent.name
+                %br
+              = link_to root_path,class:"categoryLink" do
+                = @category.name
+          %tr
+            %th ブランド
+            %td 
+          %tr
+            %th 商品の状態
+            %td
+              = @item.condition
+          %tr
+            %th 配送料の負担
+            %td 
+              = @item.shipping_costs
+          %tr
+            %th 発送元の地域
+            %td 
+              = @item.prefecture.name
+          %tr
+            %th 発送日の目安
+            %td 
+              = @item.days_to_ship
+      - if user_signed_in? && current_user.id != @item.user_id
+        .main__content__middle--buy
+          = link_to "購入画面に進む", buy_transaction_path(@item.id),class:"button"
+        .main__content__middle--option
+          %ul
+            %li.favorite
+              =icon("fas","star")
+              %span
+                お気に入り
+              %span
+                0
+            %li.calling
+              =icon("fas","phone")
+              %span
+                不適切な商品の通報
+      - elsif user_signed_in? && current_user.id == @item.user_id
+        .main__content__middle--edit
+          = link_to "編集する","#",class:"edit-btn"
+        .main__content__middle--delete
+          = link_to "削除する","#",class:"delete-btn"
+      - else 
+        .main__content__middle--login
+          = link_to "ログインする","/users/sign_in",class:"login-btn"
+        .main__content__middle--sign
+          = link_to "新規登録する","/users/sign_up",class: "sign-btn"
+    .main__content__comment
+      %textarea
+      .main__content__comment--message
+        相手の事を考え丁寧なコメントを心掛けましょう
+        %br
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      .main__content__comment--post
+        = icon("fas","comment")
+        %span
+          = link_to "コメントする","#"
+    .main__content__bottom
+      %ul
+        %li
+          =icon("fas","arrow-left")
+          %span
+            前の商品
+        %li
+          後ろの商品
+          %span
+            =icon("fas","arrow-right")
+      .main__content__category
+        = link_to "メンズをもっと見る" ,"#",class:"category--tree"
+.bottomBanner
+  .bottomBanner-desc
+    %h2.bottomBanner-desc__headline だれでもかんたん、人生を変えるフリマアプリ
+    .bottomBanner-desc__text 今すぐ無料ダウンロード！
+    .bottomBanner-desc__btn
+      .bottomBanner-desc__btn__appleBtn
+      = link_to image_tag('material/icon/appStoreLogo.svg', height: '54', width: '180', ),"#",crass:"img"
+      .bottomBanner-desc__btn__googleBtn
+      = link_to image_tag('material/icon/googlePlayLogo.svg', height: '54', width: '180', ),"#",crass:"img"
+
+= render "homes/footerMain"

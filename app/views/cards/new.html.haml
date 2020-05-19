@@ -2,6 +2,13 @@
 .mainbox
   .mypage
     = render "users/mypage_sidebar"
-    = render "cards/card_form"
+    .card-form
+      .card-form__header
+        .card-form__headerTitle
+          クレジットカード情報入力
+        .card-form__main
+          .card-form__mainForm
+            = form_with url: user_cards_path(current_user.id), method: :post, id: "charge-form", name: "inputForm", local: true do |f|
+              = render partial: "cards/card_form", locals: {f: f, error_message: @error_message}
 = render 'homes/footerMain'
 = render 'homes/sellBtn'

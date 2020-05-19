@@ -4,7 +4,7 @@ $(function(){
     
     var imageData = $(".js-file").val();
     if(imageData==""){
-      $(".post__drop__box__container").after("<p class='error'>画像を選択してください</p>");
+      $(".form__items__main__image--field").after("<p class='error'>画像を選択してください</p>");
     }
     var editImageData = $(".image-preview").length
     if(editImageData==0){
@@ -36,7 +36,11 @@ $(function(){
       $("#price__calc").after("<p class='error'>入力してください</p>").css({
         "border" : "1px solid red",
       });
-
+    }
+    if(PriceData<300 || PriceData>9999999){
+      $("#price__calc").after("<p class='error'>金額を正しく入力してください</p>").css({
+        "border" : "1px solid red",
+      });
     }
     
     $(".js-file,input[type='text'].validate, textarea.validate, select.validate").

@@ -30,4 +30,18 @@ Rails.application.routes.draw do
     resources :cards, except: [:show, :edit, :update]
   end
 
+  resources :transaction, only: [] do
+    member do
+      get   'buy',     to: 'transaction#buy'
+      post  'pay',     to: 'transaction#pay'
+      get   'sold',    to: 'transaction#sold'
+      get   'done',    to: 'transaction#done'
+      get   'error',   to: 'transaction#error'
+      get   'card',    to: 'transaction#card'
+      post  'card',    to: 'transaction#register_card'
+      get   'address', to: 'transaction#address'
+      patch 'address', to: 'transaction#update_address'
+    end
+    
+  end
 end

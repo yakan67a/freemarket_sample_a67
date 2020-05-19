@@ -1,0 +1,15 @@
+= render "shared/single_header"
+
+.single-main
+  .single-container
+    .single-container__header
+      商品はすでに売り切れています
+  
+    .single-container__box
+      .single-container__box--inner
+        .back-item-detail
+          = link_to "商品画面に戻る", item_path(@item.id)
+
+-# 画面下部に余白がでないようにする
+.purchaseFooterMargin
+= render "shared/single_footer"

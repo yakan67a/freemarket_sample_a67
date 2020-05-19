@@ -1,0 +1,204 @@
+.main{
+  height: auto;
+  width: 100vw;
+  border-top: 1px solid #eeeeee;
+  &__content{
+    padding-top: 40px;
+    margin: 0 auto;
+    width: 720px;
+    height: auto;
+    &__middle{
+      background-color:#fff;
+      width: inherit;
+      height: inherit;
+      padding: 30px;
+      &--name{
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+      }
+      .image__box{
+        margin: 10px;
+        .bigbox{
+          .bigPict{
+            object-fit: contain;
+          }
+          .smallbox{
+            display: flex;
+            justify-content: center;
+          }
+        }
+      }
+      p.explanation{
+        text-align: center;
+      }
+      .price__box{
+        text-align: center;
+        margin-bottom: 24px;
+        p.price{
+          font-weight: bold;
+          font-size: 40px;
+        }
+      }
+      .description__box{
+        margin-bottom: 20px;
+      }
+      .table__box{
+        margin-bottom: 20px;
+        table{
+          width: 100%;
+          border: 1px solid #dedede;
+          tr{
+            th{
+              border: 1px solid #dedede;
+              background-color: #eee;
+              width: 20%;
+              font-size: 14px;
+              text-align: center;
+              padding: 8px;
+            }
+            td{
+              font-size: 14px;
+              padding: 15px;
+              width: 80%;
+              border: 1px solid #dedede;
+              .categoryLink {
+                color:#3CCACE;
+                text-decoration:none;
+              }
+            }
+          }
+        }
+      }
+      &--buy{
+        .button {
+          background: #3CCACE;     
+          color: white;     
+          @include btn-style
+          }
+        .button:hover {
+          color:#3CCACE;    
+          background:white;   
+        }
+      }
+    &--option{
+      margin-top: 15px;
+      ul{
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        li.favorite{
+          color: #3CCACE;
+          border: 1px solid #ffb340;
+          border-radius: 50px;
+          padding: 6px 10px;
+        }
+        li.calling{
+          color: black;
+          border: 1px solid black;
+          border-radius: 4px;
+          padding: 6px 10px;
+          font-size: 14px;
+        }
+      }
+    }
+    &--edit{
+      .edit-btn{
+        background: #3CCACE;     
+        color: white;     
+        @include btn-style
+      }
+      .edit-btn:hover{
+        background-color: white;
+        color:#3CCACE;
+      }
+    }
+    &--delete{
+      margin-top: 20px;
+      .delete-btn{
+        background: gray;     
+        color: white;     
+        @include btn-style
+      }
+      .delete-btn:hover{
+        background-color: white;
+        color: gray;
+      }
+    }
+    &--login{
+      .login-btn{
+        background-color: #EA352D;
+        color: white;
+        @include btn-style
+      }
+      .login-btn:hover{
+        background-color: white;
+        color:#EA352D;
+      }
+    }
+    &--sign{
+      margin-top: 20px;
+      .sign-btn{
+        background-color: #EA352D;
+        color: white;
+        @include btn-style
+      }
+      .sign-btn:hover{
+        background-color: white;
+        color:#EA352D;
+      }
+    }
+    }
+    &__comment{
+      margin-top: 10px;
+      background-color: white;
+      width: inherit;
+      height: auto;
+      padding: 20px 30px;
+      text-align: center;
+      textarea{
+        width: 602px;
+      }
+      &--message{
+        background-color: #f8f8f8;
+        padding: 8px;
+        margin: 10px 10px 30px 10px;
+        font-size: 14px;
+      }
+      &--post{
+        margin: 0 auto;
+        text-align: center;
+        background-color: #3CCACE;
+        border: 1px solid #3CCACE;
+        color: white;
+        width: 60%;
+        border-radius: 100px;
+        line-height: 48px;
+        cursor: pointer;
+        a{
+          color: white;
+        }
+      }
+    }
+    &__bottom{
+      background-color: #f8f8f8;
+      height: 100px;
+      width: inherit;
+      margin-top: 10px;
+      color: #3CCACE;
+      ul{
+        display: flex;
+        justify-content: space-between;
+      }
+    .main__content__category{
+      margin-top: 20px;
+      .category--tree{
+        color: #3CCACE;
+        font-weight: bold;
+        font-size: 20px;
+        margin: 20px 0px 30px 0px;
+        }
+      }
+    }
+  }
+}

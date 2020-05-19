@@ -1,0 +1,52 @@
+= render "shared/single_header"
+
+.single-main
+  .single-container
+    .single-container__header
+      購入が完了しました
+
+    .single-container__box
+      .single-container__box--inner
+        .buy-item
+          .buy-item__image
+            = image_tag @item.item_images.first.image_URL.url, height: 80
+          .buy-item__detail
+            .buy-item__detail--name
+              = @item.items_name
+            .buy-item__detail--price
+              = "¥#{number_with_delimiter(@item.price)} (税込) #{@item.shipping_costs.split("(")[0]}"
+
+    .single-container__box
+      .single-container__box--inner
+        .buy-price
+          .buy-price--left
+            支払い金額
+          .buy-price--right
+            = "¥#{number_with_delimiter(@item.price)}"
+
+        .user-address
+          .user-address__header
+            .user-address__header--title
+              配送先
+          .user-address__main
+            .user-address__main--address
+              = "〒#{@address.zipcode[0, 3]}-#{@address.zipcode[3, 4]}"
+              = "#{@address.prefecture.name} #{@address.city} #{@address.street_address} #{@address.building}"
+            .user-address__main--name
+              = "#{@address.name_last} #{@address.name_first}"
+
+        .pay-method
+          .pay-method__header
+            支払い方法
+          .pay-method__main
+            = "**** **** **** #{@card_info.last4}"
+            %br/
+            有効期限
+            = format("%02d / %02d", @card_info.exp_month, @card_info.exp_year.to_s.slice(2,3))
+            %br/
+            = render "cards/card_logo"
+
+        .back-home
+          = link_to "トップに戻る", root_path
+
+= render "shared/single_footer"

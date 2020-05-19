@@ -1,6 +1,15 @@
 
-= link_to new_item_path do
-  .sellBtn
-    出品する
-    .sellBtn--image
-    = image_tag 'material/icon/icon_camera.png',height: '54', width: '54', class: 'btn'
+- if user_signed_in?
+  = link_to new_item_path do
+    .sellBtn--login
+      出品する
+      .sellBtn--image
+      = image_tag 'material/icon/icon_camera.png',height: '54', width: '54', class: 'btn'
+
+- else
+  = link_to new_user_session_path do
+    .sellBtn--logout
+      ログインして
+      %br 出品
+      .sellBtn--image
+      = image_tag 'material/icon/icon_camera.png',height: '54', width: '54', class: 'btn'

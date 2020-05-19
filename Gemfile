@@ -48,6 +48,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'faker', "~> 2.8"
 end
 
 group :development do
@@ -62,7 +63,6 @@ group :development do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
-  gem 'faker', "~> 2.8"
 end
 
 group :test do

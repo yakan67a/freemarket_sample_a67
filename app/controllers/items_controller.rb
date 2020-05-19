@@ -21,6 +21,11 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+def show
+  @item = Item.find(params[:id])
+  @category = @item.category
+end
+
 
   # 出品商品編集用
   def edit
@@ -88,7 +93,7 @@ class ItemsController < ApplicationController
         :price,
         :category_id,
         :brand_id,
-        :shipping_area_id,
+        :prefecture_id,
         item_images_attributes: [:image_URL, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
