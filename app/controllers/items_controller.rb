@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :move_to_login
-  before_action :set_item, only: [:edit, :update]
+  before_action :set_item, only: [:show, :edit, :update]
 
   # 出品した商品一覧表示用
   def index
@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @category = @item.category
   end
 
