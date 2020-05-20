@@ -14,4 +14,5 @@ class User < ApplicationRecord
   mount_uploader :profile_image, MypageImageUploader
   has_many :histories
   has_one :card, dependent: :destroy
+  has_many :items
 end

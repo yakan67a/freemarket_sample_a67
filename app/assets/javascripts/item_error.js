@@ -6,6 +6,10 @@ $(function(){
     if(imageData==""){
       $(".form__items__main__image--field").after("<p class='error'>画像を選択してください</p>");
     }
+    var editImageData = $(".image-preview").length
+    if(editImageData==0){
+      $("#previews").after("<p class='error'>画像を選択してください</p>");
+    }
 
     var CategoryParentData = $("#list__category__parent").val();
     var CategoryChildData  = $("#list__category__children").val();
