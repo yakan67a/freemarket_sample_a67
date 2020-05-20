@@ -1,10 +1,11 @@
 class ItemsController < ApplicationController
 
+  before_action :move_to_login
   before_action :set_item, only: [:edit, :update]
 
   # 出品した商品一覧表示用
   def index
-    @items = Item.where(user_id: current_user.id).order('created_at DESC')
+    @items = current_user.items.order('created_at DESC')
   end
     
   def new
@@ -21,11 +22,11 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-def show
-  @item = Item.find(params[:id])
-  @category = @item.category
-end
 
+  def show
+    @item = Item.find(params[:id])
+    @category = @item.category
+  end
 
   # 出品商品編集用
   def edit
@@ -48,7 +49,6 @@ end
 
   # 編集した商品更新用
   def update
-
     if params[:item].keys.include?("item_image") || params[:item].keys.include?("item_images_attributes") 
       if @item.valid?
         if params[:item].keys.include?("item_image") 
@@ -72,7 +72,6 @@ end
     else
       redirect_back(fallback_location: root_path)
     end
-
   end
 
   def get_category_children
@@ -99,6 +98,10 @@ end
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
 end
