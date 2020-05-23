@@ -31,17 +31,18 @@
           %tr
             %th 出品者
             %td 
-              = @item.user.nickname
+              = link_to user_path(@item.user) do
+                = @item.user.nickname
           %tr
             %th カテゴリ
             %td
-              = link_to root_path,class:"categoryLink" do
+              = link_to parent_category_path(@category.root.id),class:"categoryLink" do
                 = @category.root.name
                 %br
-              = link_to root_path,class:"categoryLink" do
+              = link_to child_category_path(@category.parent.id),class:"categoryLink" do
                 = @category.parent.name
                 %br
-              = link_to root_path,class:"categoryLink" do
+              = link_to grandchild_category_path(@category.id),class:"categoryLink" do
                 = @category.name
           %tr
             %th ブランド
