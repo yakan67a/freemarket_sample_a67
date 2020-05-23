@@ -29,6 +29,10 @@ class ItemsController < ApplicationController
 
   # 出品商品編集用
   def edit
+    if @item.user_id != current_user.id
+      redirect_to root_path
+    end
+
     grandchild_category = @item.category
     child_category = grandchild_category.parent
 
