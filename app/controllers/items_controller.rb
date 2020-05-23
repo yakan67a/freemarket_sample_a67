@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :move_to_login
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # 出品した商品一覧表示用
   def index
@@ -66,6 +66,20 @@ class ItemsController < ApplicationController
       end
     else
       redirect_back(fallback_location: root_path)
+    end
+  end
+
+  # 商品削除用
+  def destroy
+    if @item.user.id == current_user.id
+      if @item.destroy
+        redirect_to update_complete_user_path(current_user.id), notice: "商品を削除しました"
+      else
+        redirect_to update_complete_user_path(current_user.id), alert: '削除に失敗しました'
+      end
+    else
+      flash.now[:error] = '削除できません'
+      render update_complete_user_path(current_user.id)
     end
   end
 

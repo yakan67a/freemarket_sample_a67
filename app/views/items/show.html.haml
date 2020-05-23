@@ -81,7 +81,7 @@
         .main__content__middle--edit
           = link_to "編集する", edit_item_path(@item), class:"edit-btn"
         .main__content__middle--delete
-          = link_to "削除する","#",class:"delete-btn"
+          = link_to "削除する", item_path(@item), method: :delete, data: { confirm: "削除しますか？" }, class: "delete-btn"
       - else 
         .main__content__middle--login
           = link_to "ログインする","/users/sign_in",class:"login-btn"
