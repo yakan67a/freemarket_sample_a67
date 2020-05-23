@@ -9,6 +9,15 @@ Rails.application.routes.draw do
 
   root to: "homes#index"
 
+
+  resources :categories, only: [:index] do
+    member do
+      get 'parent'
+      get 'child'
+      get 'grandchild'
+    end
+  end
+
   resources :items  do
     collection do
       get 'get_category_children', defaults: {format: 'json'}

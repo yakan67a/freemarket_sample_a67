@@ -1,0 +1,33 @@
+.categoryContainer
+  .categoryContainerChart
+    %h2.categoryContainerChart__head 
+      = "#{@category.name}の商品一覧"
+    %ul.categoryLists
+      - @items.each do |item|
+        %li<
+          - category = Category.find(item.category_id)
+          = link_to child_category_path(item.category_id) do
+            = category.name
+          
+
+  .categoryContainerBox
+    .categoryContainerBox__lists
+      - @items.each do |item|
+        .categoryContainerBox-list
+          - if item.history
+            .categoryContainerBox-list__sold
+              .categoryContainerBox-list__sold__inner
+                SOLD
+          = link_to item_path(item.id), method: :get do
+            .categoryContainerBox-list__image
+              = image_tag item.item_images.first.image_URL.url,width: '220px',  class: 'img'
+            .categoryContainerBox-list__detail
+              %h3.name
+              =item.items_name
+              %ul.desc
+                %li.price
+                  = number_with_delimiter(item.price)
+                  円
+                %li.like
+                  %i.fa.fa-star 0
+              %p.tax（税込み）
