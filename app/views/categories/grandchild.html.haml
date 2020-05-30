@@ -1,4 +1,32 @@
 = render 'homes/headerMain'
-= render 'categoryContainer'
+
+.categoryContainer
+  .categoryContainerChart
+    %h2.categoryContainerChart__head 
+      = "#{@category.name}の商品一覧"
+        
+
+  .categoryContainerBox
+    .categoryContainerBox__lists
+      - @items.each do |item|
+        .categoryContainerBox-list
+          - if item.history
+            .categoryContainerBox-list__sold
+              .categoryContainerBox-list__sold__inner
+                SOLD
+          = link_to item_path(item.id), method: :get do
+            .categoryContainerBox-list__image
+              = image_tag item.item_images.first.image_URL.url,width: '220px',  class: 'img'
+            .categoryContainerBox-list__detail
+              %h3.name
+              =item.items_name
+              %ul.desc
+                %li.price
+                  = number_with_delimiter(item.price)
+                  円
+                %li.like
+                  %i.fa.fa-star 0
+              %p.tax（税込み）
+
 = render 'homes/footerMain'
 = render 'homes/sellBtn'
