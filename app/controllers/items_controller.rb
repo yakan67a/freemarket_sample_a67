@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   before_action :move_to_login
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :item_purchased?, only: [:edit, :update, :destroy]
 
   # 出品した商品一覧表示用
   def index
@@ -62,7 +63,7 @@ class ItemsController < ApplicationController
         redirect_to update_complete_user_path(current_user.id), notice: "商品を更新しました"
       else
         flash.now[:error] = '更新失敗'
-        render update_complete_user_path
+        render 'users/update_complete' 
       end
     else
       redirect_back(fallback_location: root_path)
@@ -79,7 +80,7 @@ class ItemsController < ApplicationController
       end
     else
       flash.now[:error] = '削除できません'
-      render update_complete_user_path(current_user.id)
+      render 'users/update_complete'
     end
   end
 
@@ -111,6 +112,13 @@ class ItemsController < ApplicationController
 
   def move_to_login
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def item_purchased?
+    if @item.history.present?
+      flash.now[:error] = '購入済みの商品の編集/削除はできません'
+      render 'users/update_complete' 
+    end
   end
 
 end
