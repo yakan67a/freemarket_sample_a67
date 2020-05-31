@@ -38,8 +38,16 @@
         .mypage__main__container__itemBox__list__item
           favoriteItem
       %li.mypage__main__container__itemBox__list
-        .mypage__main__container__itemBox__list__item
-          buyItem
+        - @bought_items.each do |item|
+          .mypage__main__container__itemBox__list__item
+            = link_to item_path(item.id), method: :get do
+              .item-image
+                = image_tag item.item_images.first.image_URL.url, width: '178px', class: 'img'
+              .item-name
+                = item.items_name
+              .item-price
+                = number_with_delimiter(item.price)
+                円（税込み）
       %li.mypage__main__container__itemBox__list
         .mypage__main__container__itemBox__list__item
           saleItem
