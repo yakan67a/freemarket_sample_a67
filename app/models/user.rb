@@ -15,4 +15,14 @@ class User < ApplicationRecord
   has_many :histories
   has_one :card, dependent: :destroy
   has_many :items
+  
+  # has_many :items, through: :historiesとしてしまうと自分の出品商品一覧が取得できなくなるため、
+  # 別途自分が購入した商品を取得するメソッドの定義を行う。
+  def bought_item
+    item_ids = []
+    self.histories.each do |history|
+      item_ids << history.item_id
+    end
+    Item.includes(:item_images).find(item_ids)
+  end
 end
