@@ -64,6 +64,24 @@
       &__list {
         &__item {
           @include main_view_items;
+          background-color: white;
+          color: #333;
+
+          .item-image {
+            background-color: white;
+            width: 178px;
+            max-height: 100px;
+            overflow: hidden;
+          }
+          .item-name {
+            padding: 3px 5px;
+            color: #333;
+          }
+          .item-price {
+            padding: 0px 5px;
+            font-size: 14px;
+            color: #333;
+          }
         }
       }
       li.show {
