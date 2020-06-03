@@ -2,6 +2,9 @@ class CategoriesController < ApplicationController
 
 before_action :set_category, only: [:parent, :child, :grandchild]
 
+def index
+end
+
 
 def parent
   children = @category.children
@@ -29,6 +32,7 @@ end
 def grandchild
   @items = Item.where(category_id: params[:id])
 end
+
 end
 
 private

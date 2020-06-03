@@ -9,6 +9,12 @@ Rails.application.routes.draw do
 
   root to: "homes#index"
 
+  resources :homes  do
+    collection do
+      get 'new', defaults: {format: 'json'}
+    end
+  end
+
 
   resources :categories, only: [:index] do
     member do
