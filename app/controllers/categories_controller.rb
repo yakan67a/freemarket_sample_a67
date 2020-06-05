@@ -7,6 +7,7 @@ end
 
 
 def parent
+  @parents  = Category.where(ancestry: nil)
   children = @category.children
   grandchildren = []
   children.each do |child|
@@ -22,6 +23,7 @@ def parent
 end
 
 def child
+  @parents  = Category.where(ancestry: nil)
   grandchildren = @category.children
   @items = []
   grandchildren.each do |grandchild|
@@ -30,6 +32,7 @@ def child
 end
 
 def grandchild
+  @parents  = Category.where(ancestry: nil)
   @items = Item.where(category_id: params[:id])
 end
 

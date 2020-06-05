@@ -10,9 +10,12 @@ class CardsController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_info = customer.cards.retrieve(@card.card_id)
     end
+
+    @parents  = Category.where(ancestry: nil)
   end
 
   def new
+    @parents  = Category.where(ancestry: nil)
   end
 
   def create

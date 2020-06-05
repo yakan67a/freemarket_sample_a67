@@ -16,7 +16,7 @@
           %details
             %summary カテゴリ
             %ul.parents_list
-              - parents .each do |parent|
+              - @parents .each do |parent|
                 %li= link_to "#{parent.name}", parent_category_path(parent.id), class: "parent_category",id: "#{parent.id}"
             %ul.children_list
             %ul.grand_children_list

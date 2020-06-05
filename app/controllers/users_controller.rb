@@ -8,14 +8,17 @@ class UsersController < ApplicationController
 
   # マイページメイン画面用
   def show
+    @parents  = Category.where(ancestry: nil)
   end
 
   # マイページからのログアウト用
   def logout
+    @parents  = Category.where(ancestry: nil)
   end
 
   # プロフィール編集用
   def edit_profile
+    @parents  = Category.where(ancestry: nil)
   end
 
   # プロフィール更新用
@@ -30,6 +33,7 @@ class UsersController < ApplicationController
 
   # 送付先住所編集用
   def edit_shipping_address
+    @parents  = Category.where(ancestry: nil)
   end
 
   # 送付先住所更新用
@@ -43,6 +47,7 @@ class UsersController < ApplicationController
   end
 
   def update_complete
+    @parents  = Category.where(ancestry: nil)
   end
 
   private
