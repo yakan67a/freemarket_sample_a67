@@ -8,14 +8,24 @@
     }
     &__profileBox {
       padding: 20px 0 50px 0;
-      &__profile--img {
-        margin: auto;
-        height: 100px;
-        width: 100px;
-        border-radius: 50px;
-        line-height: 100px;
-        background-color: #3CCACE;
-        color: white;
+      &__profile {
+        &--img {
+          margin: auto;
+          height: 100px;
+          width: 100px;
+          img {
+            border-radius: 50%;
+          }
+        }
+        &--dummy {
+          margin: auto;
+          height: 100px;
+          width: 100px;
+          border-radius: 50px;
+          line-height: 100px;
+          background-color: #3CCACE;
+          color: white;
+        }
       }
       &__info {
         text-align: center;

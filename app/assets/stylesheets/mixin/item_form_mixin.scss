@@ -33,3 +33,18 @@
 border-bottom: 1px solid;
 border-color: #eeeeee;
 }
+
+@mixin small_btn_style {
+  margin: 0 10px;
+  a {
+    padding: 10px;
+    border-radius: 5px;
+    color: #777777;
+    background-color: #eeeeee;
+    border: 1px solid #dddddd;
+  }
+  a:hover {
+    color: #333333;
+    border: 1px solid #aaaaaa;
+  }
+}

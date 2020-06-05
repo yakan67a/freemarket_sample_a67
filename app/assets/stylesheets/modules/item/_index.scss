@@ -1,0 +1,45 @@
+.ex-items {
+  &__title {
+    @include user_title;
+  }
+  &__box {
+    padding: 10px;
+    .show {
+      display: inline;
+    }
+    &__index {
+      display: none;
+      &__item {
+        margin: 10px;
+        height: 70px;
+        display: flex;
+        border-bottom: 1px solid #cccccc;
+        line-height: 70px;
+        &__img {
+          margin: 2px 8px;
+          height: 62px;
+          width: 62px;
+          img {
+            border-radius: 50%;
+          }
+        }
+        &__name {
+          margin-left: 20px;
+          font-size: 20px;
+        }
+        &__btn {
+          margin: 0 0 0 auto;
+          padding-right: 30px;
+          display: flex;
+          line-height: 70px;
+          &__edit {
+            @include small_btn_style;
+          }
+          &__delete {
+            @include small_btn_style;
+          }
+        }
+      }
+    }
+  }
+}
