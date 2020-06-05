@@ -33,7 +33,6 @@ def grandchild
   @items = Item.where(category_id: params[:id])
 end
 
-end
 
 private
 
@@ -45,5 +44,5 @@ def set_parents
   @parents = Category.where(ancestry: nil)
 end
 
-
+end
 
