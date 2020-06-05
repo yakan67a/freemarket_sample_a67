@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+before_action :set_parents, only:[:show]
+
 def new
   @item = Item.new
   @item.item_images.new
@@ -18,7 +20,6 @@ end
 def show
   @item = Item.find(params[:id])
   @category = @item.category
-  @parents  = Category.where(ancestry: nil)
 end
 
 
@@ -43,4 +44,9 @@ def item_params
       :prefecture_id,
       item_images_attributes: [:image_URL,:_destroy, :id]).merge(user_id: current_user.id)
 end
+
+def set_parents
+  @parents = Category.where(ancestry: nil)
+end
+
 end
