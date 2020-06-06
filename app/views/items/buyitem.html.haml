@@ -1,0 +1,23 @@
+= render 'homes/headerMain'
+.mainbox
+  .mypage
+    = render "users/mypage_sidebar"
+
+    .mypage__main
+      .mypage__main__top
+        .ex-items
+          .ex-items__title
+            購入商品
+          .ex-items__box
+            .ex-items__box__index.show
+              - @bought_items.each do |item|
+                .ex-items__box__index__item
+                  .ex-items__box__index__item__img
+                    = image_tag item.item_images.first.image_URL.url, width: '62px', height: '62px'
+                  .ex-items__box__index__item__name
+                    = item.items_name
+                  .ex-items__box__index__item__btn
+                    .ex-items__box__index__item__btn__show
+                      = link_to "詳細", item_path(item.id), method: :get
+
+= render 'homes/footerMain'
