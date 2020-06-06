@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   # マイページメイン画面用
   def show
     @bought_items = current_user.bought_item
+    @sales = 0
+    current_user.items.each do |item|
+      @sales += item.price if item.history.present?
+    end
   end
 
   # マイページからのログアウト用
