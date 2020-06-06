@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @bought_items = current_user.bought_item
     @sales = 0
     current_user.items.each do |item|
-      @sales += item.price if item.history.present?
+      @sales += (item.price * 0.9).round if item.history.present?
     end
   end
 
