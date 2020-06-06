@@ -48,3 +48,5 @@
               .item-price
                 = number_with_delimiter(item.price)
                 円（税込み）
+                - if item.history.present?
+                  %br 【売却済み】
