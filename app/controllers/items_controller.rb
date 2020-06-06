@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_parents, only: [:index, :show, :edit]
+  before_action :set_parents, only: [:index, :show, :edit, :buyitem]
   before_action :move_to_login
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :item_purchased?, only: [:edit, :update, :destroy]
@@ -8,6 +8,10 @@ class ItemsController < ApplicationController
   # 出品した商品一覧表示用
   def index
     @items = current_user.items.order('created_at DESC')
+  end
+
+  def buyitem
+    @bought_items = current_user.bought_item
   end
 
   def new
