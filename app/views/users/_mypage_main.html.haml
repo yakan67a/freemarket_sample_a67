@@ -12,12 +12,10 @@
             イメージ画像
       .mypage__main__top__profileBox__info
         .mypage__main__top__profileBox__info__top
-          .mypage__main__top__profileBox__info__top__rate
-            評価：０
           .mypage__main__top__profileBox__info__top__items
             出品数：#{current_user.items.count}
         .mypage__main__top__profileBox__info__profit
-          今までの利益：¥0
+          = "今までの利益：¥#{@sales}"
   .mypage__main__container
     %ul.mypage__main__container__menu
       %li.mypage__main__container__menu__title#favorite.active
@@ -28,20 +26,6 @@
         出品商品
     %ul.mypage__main__container__itemBox
       %li.mypage__main__container__itemBox__list.show
-        .mypage__main__container__itemBox__list__item
-          favoriteItem
-        .mypage__main__container__itemBox__list__item
-          favoriteItem
-        .mypage__main__container__itemBox__list__item
-          favoriteItem
-        .mypage__main__container__itemBox__list__item
-          favoriteItem
-        .mypage__main__container__itemBox__list__item
-          favoriteItem
-        .mypage__main__container__itemBox__list__item
-          favoriteItem
-        .mypage__main__container__itemBox__list__item
-          favoriteItem
       %li.mypage__main__container__itemBox__list
         - @bought_items.each do |item|
           .mypage__main__container__itemBox__list__item
@@ -54,5 +38,13 @@
                 = number_with_delimiter(item.price)
                 円（税込み）
       %li.mypage__main__container__itemBox__list
-        .mypage__main__container__itemBox__list__item
-          saleItem
+        - current_user.items.each do |item|
+          .mypage__main__container__itemBox__list__item
+            = link_to item_path(item.id), method: :get do
+              .item-image
+                = image_tag item.item_images.first.image_URL.url, width: '178px', class: 'img'
+              .item-name
+                = item.items_name
+              .item-price
+                = number_with_delimiter(item.price)
+                円（税込み）
