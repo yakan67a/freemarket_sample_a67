@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :set_parents, only: :edit
 
   # GET /resource/sign_up
   # def new
@@ -100,6 +101,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def shipping_address_params
     params.require(:shipping_address).permit(:name_first, :name_last, :name_first_kana, :name_last_kana, :zipcode, :prefecture_id, :city, :street_address, :building, :phone_number)
+  end
+
+  def set_parents
+    @parents = Category.pickup_parents
   end
 
 end

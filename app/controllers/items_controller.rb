@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_parents, only:[:show, :index, :buyitem]
+  before_action :set_parents, only: [:index, :show, :edit, :buyitem]
   before_action :move_to_login
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :item_purchased?, only: [:edit, :update, :destroy]
