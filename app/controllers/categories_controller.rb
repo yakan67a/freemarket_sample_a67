@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
 before_action :set_category, only: [:parent, :child, :grandchild]
-before_action :set_parents
+before_action :set_parents, only: [:parent, :child, :grandchild]
 def index
 end
 
@@ -10,27 +10,27 @@ def parent
   children = @category.children
   grandchildren = []
   children.each do |child|
-    grandchildren << Category.where(ancestry: "#{@category.id}/#{child.id}")
+    grandchildren << Category.childrenTree("#{@category.id}/#{child.id}")
   end
   @items = []
   grandchildren.each do |grandchild|
     grandchild.each do |id|
-      @items += Item.where(category_id: id)
+      @items += Item.parentItems(id)
     end
   end
-  @categories = Category.where(ancestry: nil)
+  @categories = Category.pickup_parents
 end
 
 def child
   grandchildren = @category.children
   @items = []
   grandchildren.each do |grandchild|
-    @items += Item.where(category_id: grandchild.id)
+    @items += Item.childItems(grandchild)
   end
 end
 
 def grandchild
-  @items = Item.where(category_id: params[:id])
+  @items = Item.grandchildItems(params[:id])
 end
 
 
@@ -41,7 +41,7 @@ def set_category
 end
 
 def set_parents
-  @parents = Category.where(ancestry: nil)
+  @parents = Category.pickup_parents
 end
 
 end

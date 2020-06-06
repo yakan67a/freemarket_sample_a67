@@ -46,7 +46,8 @@ def item_params
 end
 
 def set_parents
-  @parents = Category.where(ancestry: nil)
+  @parents = Category.pickup_parents
+
 end
 
 end

@@ -15,4 +15,9 @@ class Item < ApplicationRecord
   validates :items_name, length: {maximum: 40}
   validates :price, presence: true,numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
 
+  scope :pickup_parents, -> { where(ancestry: nil)}
+  scope :parentItems, -> (params){ where(category_id: params) }
+  scope :childItems, -> (grandchild){ where(category_id: grandchild) }
+  scope :grandchildItems, -> (params){ where(category_id: params) }
+
 end

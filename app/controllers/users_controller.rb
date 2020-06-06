@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   end
 
   def set_parents
-    @parents = Category.where(ancestry: nil)
+    @parents = Category.pickup_parents
   end
   
 
