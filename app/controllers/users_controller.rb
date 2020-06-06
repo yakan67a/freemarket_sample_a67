@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   # マイページメイン画面用
   def show
+    @bought_items = current_user.bought_item
   end
 
   # マイページからのログアウト用

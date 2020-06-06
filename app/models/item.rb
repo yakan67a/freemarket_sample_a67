@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :brand, optional: true
   belongs_to :user  
-  has_one    :rating, dependent: :destroy
+  has_one    :rating
   has_one    :history
 
   validates :items_name, :item_description, :condition, :shipping_costs, :days_to_ship, :price, :category_id, :prefecture_id, presence: true
