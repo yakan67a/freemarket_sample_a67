@@ -51,27 +51,57 @@
       }
 
       &__bottom{
+        z-index: 20;
         font-size: 14px;
         display: flex;
         margin-bottom: 10px;
         &__left{
-          position: relative;
+          color: #333;
           display: flex;
           &__category{
+            position: absolute;
+            z-index: 10;
             line-height: 32px;
             background-position: center right;
             background-repeat: no-repeat;
             background-size: 18px;
             padding-right: 30px;
+            details{
+              float: left;
+              summary{
+                background-color:rgba(255,255,255,0.8);
+                
+              }
+              .parents_list{
+                z-index: 10;
+                width: 200px;
+                float: left;
+                background-color: rgba(255,255,255,0.8);
+              }
+              .children_list{
+                z-index: 10;
+                width: 200px;
+                float: left;
+                background-color: rgba(255,255,255,0.8);
+              }
+              .grand_children_list{
+                z-index: 10;
+                width: 200px;
+                float: left;
+                background-color: rgba(255,255,255,0.8);
+              }
+            }
           }
-          &__brand{
-            line-height: 32px;
-            background-position: center right;
-            background-repeat: no-repeat;
-            background-size: 18px;
-            padding-right: 30px;
+        
+            &__brand{
+              margin-left: 90px;
+              line-height: 32px;
+              background-position: center right;
+              background-repeat: no-repeat;
+              background-size: 18px;
+              padding-right: 30px;
+            }
           }
-        }
         &__right{
           margin-left: auto;
           display: flex;
@@ -97,6 +127,7 @@
 
 
 .main{
+  z-index: 1;
   background-color: #f8f8f8;;
   width: 100vw;
   .mainVisual{
@@ -494,3 +525,4 @@
   font-size: 13px;
   margin-bottom: 5px;
 }
+

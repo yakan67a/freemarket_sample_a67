@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 
+  before_action :set_parents, only:[:show]
   before_action :move_to_login
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :item_purchased?, only: [:edit, :update, :destroy]
@@ -105,6 +106,10 @@ class ItemsController < ApplicationController
         :prefecture_id,
         item_images_attributes: [:image_URL, :_destroy, :id]).merge(user_id: current_user.id)
   end
+  
+  def set_parents
+  @parents = Category.pickup_parents
+  end
 
   def set_item
     @item = Item.find(params[:id])
@@ -120,5 +125,4 @@ class ItemsController < ApplicationController
       render 'users/update_complete' 
     end
   end
-
 end

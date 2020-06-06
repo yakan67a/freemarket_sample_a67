@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :set_user, except: :index
+  before_action :set_parents, only:[:show, :logout, :edit_profile, :edit_shipping_address, :update_complete]
 
   # 新規登録画面用
   def index
@@ -59,5 +60,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @shipping_address = ShippingAddress.find(params[:id])
   end
+
+  def set_parents
+    @parents = Category.pickup_parents
+  end
+  
 
 end

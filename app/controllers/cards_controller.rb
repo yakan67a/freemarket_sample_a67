@@ -2,6 +2,7 @@ class CardsController < ApplicationController
   require 'payjp'
   before_action :move_to_login
   before_action :set_payjp_key, only: [:index, :create, :destroy]
+  before_action :set_parents, only:[:index, :new]
 
   def index
     @card = current_user.card
@@ -10,6 +11,7 @@ class CardsController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_info = customer.cards.retrieve(@card.card_id)
     end
+
   end
 
   def new
@@ -76,6 +78,10 @@ class CardsController < ApplicationController
 
   def set_payjp_key # payjpの秘密鍵をセットする
     Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
+  end
+
+  def set_parents
+    @parents = Category.pickup_parents
   end
 
 end
